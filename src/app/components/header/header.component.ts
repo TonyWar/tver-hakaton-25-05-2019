@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { UserRole } from 'src/app/types/user.model';
+import { of } from 'rxjs';
+import { NotificationsService } from 'src/app/services/notifications/notifications.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +12,11 @@ import { UserRole } from 'src/app/types/user.model';
 })
 export class HeaderComponent implements OnInit {
   profileLink = '';
+  notifications = [];
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private notiS: NotificationsService
   ) { }
 
   ngOnInit() {
@@ -34,7 +38,19 @@ export class HeaderComponent implements OnInit {
     }))
     .subscribe(res => {
       this.profileLink = res;
-    })
+    });
+
+    this.auth.userAuthData$.pipe(
+      switchMap(user => {
+        if (!user) {
+          return of([]);
+        }
+        return this.notiS.getUserNotifications(user.id);
+      })
+    )
+    .subscribe(res => {
+      this.notifications = res;
+    });
   }
 
   getProfileLink() {
