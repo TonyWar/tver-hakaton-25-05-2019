@@ -44,6 +44,7 @@ export class InMemoryDataService implements InMemoryDbService {
         address: 'г.Тверь, Спортивный переулок, 12'
       }
     ];
+    // const tasks
     return { users };
   }
 
