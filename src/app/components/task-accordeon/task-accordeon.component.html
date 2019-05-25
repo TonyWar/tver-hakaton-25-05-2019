@@ -43,7 +43,7 @@
           <mat-icon class="icon-no-smile" aria-hidden="false" aria-label="Example delete icon">sentiment_dissatisfied</mat-icon>
         </p>
         <div *ngIf="task.helperId">
-          <app-helper-card></app-helper-card>
+          <app-helper-card [helperId]="task.helperId"></app-helper-card>
         </div>
       </div>
     </div>
