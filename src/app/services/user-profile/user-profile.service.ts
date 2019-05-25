@@ -18,9 +18,9 @@ export class UserProfileService {
     return this.http.get<UserProfile[]>(this.profilesUrl)
       .pipe(
         map(profiles => profiles
-            .find(profile => profile.phone === phone)
+          .find(profile => profile.phone === phone)
         ),
-        tap(user => {this.userProfile = user;})
+        tap(user => { this.userProfile = user; })
       );
   }
 }
