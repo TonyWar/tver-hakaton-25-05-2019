@@ -2,7 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { TaskService } from 'src/app/services/task/task.service';
 import { Task } from 'src/app/types/task.model';
 import { UserProfileService } from 'src/app/services/user-profile/user-profile.service';
-import { UserProfile, UserRole } from 'src/app/types/user.model';
+import { UserProfile } from 'src/app/types/user.model';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: "app-older",
@@ -10,21 +13,40 @@ import { UserProfile, UserRole } from 'src/app/types/user.model';
   styleUrls: ["./older.component.less"]
 })
 export class OlderComponent implements OnInit {
-  olderId: string = '4';
-
   tasks: Task[];
   user: UserProfile;
 
   constructor(
     private taskService: TaskService,
-    private userService: UserProfileService
+    private userService: UserProfileService,
+    private route: ActivatedRoute
     ) {}
 
   ngOnInit() {
-    this.taskService.getOlderTasks(this.olderId)
-    .subscribe((tasks: Task[]) => this.tasks = tasks)
+    this.route.params.pipe(
+      switchMap((params) => {
+        if (params.olderId) {
+          return this.taskService.getOlderTasks(params.olderId);
+        }
 
-    this.userService.getUserById(this.olderId)
-    .subscribe((user: UserProfile) => this.user = user)
+        return of(undefined);
+      })
+    ).subscribe((tasks: Task[]) => {
+      this.tasks = tasks;
+      console.log('task', tasks);
+    })
+
+    this.route.params.pipe(
+      switchMap((params) => {
+        if (params.olderId) {
+          return this.userService.getUserById(params.olderId);
+        }
+
+        return of(undefined);
+      })
+    ).subscribe((user: UserProfile) => {
+      this.user = user;
+      console.log('user', user);
+    })
   }
 }

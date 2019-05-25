@@ -33,7 +33,7 @@ export class OlderRegistryComponent implements OnInit {
   submit() {
     this.userProfileService.addOlderUser({ ...this.registryForm.value, role: UserRole.OLDER })
       .subscribe(res => {
-        this.router.navigate(['older/profile']);
+        this.router.navigate([`older/profile/${res.id}`]);
       });
   }
 }
