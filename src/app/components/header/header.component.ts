@@ -13,6 +13,7 @@ import { NotificationsService } from 'src/app/services/notifications/notificatio
 export class HeaderComponent implements OnInit {
   profileLink = '';
   notifications = [];
+  userId?: string;
 
   constructor(
     private auth: AuthService,
@@ -36,24 +37,36 @@ export class HeaderComponent implements OnInit {
       }
       return redirect;
     }))
-    .subscribe(res => {
-      this.profileLink = res;
-    });
+      .subscribe(res => {
+        this.profileLink = res;
+      });
 
     this.auth.userAuthData$.pipe(
       switchMap(user => {
         if (!user) {
           return of([]);
         }
+        this.userId = user.id;
         return this.notiS.getUserNotifications(user.id);
       })
     )
-    .subscribe(res => {
-      this.notifications = res;
-    });
+      .subscribe(res => {
+        this.notifications = res;
+      });
   }
 
   getProfileLink() {
     return '';
+  }
+
+  removeNotif(id: string) {
+    this.notiS.removeNotification(id)
+      .subscribe(res => {
+        if (!this.userId) { return; }
+        this.notiS.getUserNotifications(this.userId)
+          .subscribe(res => {
+            this.notifications = res;
+          });
+      })
   }
 }
