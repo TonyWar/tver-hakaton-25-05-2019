@@ -1,9 +1,8 @@
 <div class="container--center">
   <div class="container">
-    <form [formGroup]="loginForm" autocomplete="off">
-      <mat-form-field>
+    <form [formGroup]="loginForm" autocomplete="off" class="form" (submit)="submit($event);">
+      <mat-form-field  class="full-width">
         <input 
-          autocomplete="mobile"
           matInput 
           formControlName="phone"
           placeholder="Мобильный телефон"
@@ -13,7 +12,7 @@
           Mobile is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field  class="full-width">
         <input 
           matInput 
           formControlName="password"
@@ -24,6 +23,14 @@
           Password is <strong>required</strong>
         </mat-error>
       </mat-form-field>
+      <button 
+        class="btn-create" 
+        mat-raised-button
+        [disabled]="loginForm.invalid"
+        color="primary"
+      >
+        Войти
+      </button>
     </form>
   </div>
 </div>
