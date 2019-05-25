@@ -13,8 +13,6 @@ import { of } from 'rxjs';
   styleUrls: ["./older.component.less"]
 })
 export class OlderComponent implements OnInit {
-  olderId: string = '4';
-
   tasks: Task[];
   user: UserProfile;
 

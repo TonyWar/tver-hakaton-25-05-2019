@@ -4,12 +4,14 @@ import { UserProfile } from 'src/app/types/user.model';
 import { map, tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { httpOptions } from 'src/app/types/variables';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProfileService {
   private profilesUrl = 'api/users';
+
   constructor(
     private http: HttpClient,
     private auth: AuthService,
@@ -33,6 +35,6 @@ export class UserProfileService {
   }
 
   addOlderUser(data: UserProfile) {
-    return this.http.post<any>(this.profilesUrl, data);
+    return this.http.post<any>(this.profilesUrl, data, httpOptions);
   }
 }
