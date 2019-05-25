@@ -1,17 +1,20 @@
 <h1>Добавление пожилого человека</h1>
 
-<form [formGroup]="registryForm" class="example-form">
-  <mat-form-field class="example-full-width">
+<form [formGroup]="registryForm" class="form">
+  <mat-form-field class="full-width">
     <input matInput formControlName="name" placeholder="Имя">
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <input matInput formControlName="surname" placeholder="Фамилия">
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <input matInput formControlName="address" placeholder="Адрес">
   </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput formControlName="old" placeholder="Возраст">
+
+  <mat-form-field>
+    <input matInput formControlName="old" [matDatepicker]="picker" placeholder="Возраст">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <button mat-raised-button (click)="submit()">Создать</button>
