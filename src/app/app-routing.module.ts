@@ -17,9 +17,13 @@ const routes: Routes = [
   { path: 'older/profile', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'older/profile/:olderId', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'admin/profile', component: AdminComponent, canActivate: [AuthGuard, OnlyAdminGuard] },
-  { path: 'helper/profile', component: HelperComponent, canActivate: [AuthGuard] },
   { path: 'users', component: UsersComponent},
   { path: 'users/:roles', component: UsersComponent}
+  { path: 'helper/profile', component: HelperComponent, canActivate: [AuthGuard] },
+  { path: '**',
+    redirectTo: '/sign-in',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

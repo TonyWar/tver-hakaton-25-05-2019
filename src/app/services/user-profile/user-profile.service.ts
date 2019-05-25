@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserProfile } from 'src/app/types/user.model';
+import { UserProfile, UserRole } from 'src/app/types/user.model';
 import { map, tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -19,6 +19,20 @@ export class UserProfileService {
 
   getAllUsers() {
     return this.http.get<UserProfile[]>(this.profilesUrl);
+  }
+
+  getOlderUser() {
+    this.getAllUsers()
+      .pipe(
+        map(users => users.filter(user => user.role === UserRole.OLDER))
+      );
+  }
+
+  getHelperUser() {
+    this.getAllUsers()
+      .pipe(
+        map(users => users.filter(user => user.role === UserRole.HELPER))
+      );
   }
 
   getUserProfileAuth(phone: string): Observable<UserProfile> {
