@@ -9,6 +9,9 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MaterialDModule } from './material-d/material-d.module';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './services/in-memory-data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +21,12 @@ import { MaterialDModule } from './material-d/material-d.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialDModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
