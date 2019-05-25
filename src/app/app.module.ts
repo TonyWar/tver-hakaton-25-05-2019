@@ -14,6 +14,9 @@ import { InMemoryDataService }  from './services/in-memory-data.service';
 import { OlderRegistryComponent } from './components/older-registry/older-registry.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddTaskComponent } from './components/add-task/add-task.component';
+import { AdminComponent } from './profile/admin/admin.component';
+import { HelperComponent } from './profile/helper/helper.component';
+import { OlderComponent } from './profile/older/older.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
     SignInComponent,
     SignUpComponent,
     OlderRegistryComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    AdminComponent,
+    HelperComponent,
+    OlderComponent
   ],
   imports: [
     BrowserModule,
