@@ -29,10 +29,9 @@ export class AddTaskComponent implements OnInit {
   ]
 
   public taskForm = this.fb.group({
-    name: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
-    old: new FormControl('', [Validators.required]),
+    // name: new FormControl(''),
+    description: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
     method: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
     endDate: new FormControl('',),

@@ -2,20 +2,21 @@
   <h1>Добавление задания</h1>
 
   <form [formGroup]="taskForm" class="form">
-    <mat-form-field class="full-width">
+    <!-- <mat-form-field class="full-width">
       <input matInput formControlName="name" placeholder="Кому нужна помощь" />
-    </mat-form-field>
+    </mat-form-field> -->
+
     <mat-form-field class="full-width">
       <textarea
         matInput
-        formControlName="surname"
+        formControlName="description"
         placeholder="Описание"
       ></textarea>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Категория</mat-label>
-      <mat-select>
+      <mat-select formControlName="category">
         <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
