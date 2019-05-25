@@ -1,6 +1,6 @@
 <ng-container *ngIf="(user | async) as user">
   <app-profile-card 
-    [name]="user?.name"
+    [user]="user"
   >
   </app-profile-card>
   <div>

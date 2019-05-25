@@ -1,7 +1,7 @@
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>{{name}} {{surname}}</mat-card-title>
-    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+    <mat-card-title>{{user.secondName}} {{user.name}} {{user.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{user.address}}</mat-card-subtitle>
   </mat-card-header>
   <img
     mat-card-image
@@ -10,7 +10,7 @@
   />
   <mat-card-content>
     <p>
-      {{description}}
+      {{ user.phone}}
     </p>
   </mat-card-content>
   <mat-card-actions class="actions">

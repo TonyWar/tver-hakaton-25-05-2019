@@ -27,6 +27,10 @@ export class UserProfileService {
       );
   }
 
+  getUserById(id: string): Observable<UserProfile> {
+    return this.http.get<UserProfile>(`${this.profilesUrl}/${id}`)
+  }
+
   addOlderUser(data: UserProfile) {
     return this.http.post<any>(this.profilesUrl, data);
   }

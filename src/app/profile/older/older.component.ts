@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskService } from 'src/app/services/task/task.service';
 import { Task } from 'src/app/types/task.model';
+import { UserProfileService } from 'src/app/services/user-profile/user-profile.service';
+import { UserProfile, UserRole } from 'src/app/types/user.model';
 
 @Component({
   selector: "app-older",
@@ -9,18 +11,28 @@ import { Task } from 'src/app/types/task.model';
 })
 export class OlderComponent implements OnInit {
   olderId: string = '4';
-  name = "Valentina";
-  surname = "Stepanovna";
-  subtitle = "Donskogo 37 dom 2";
-  description =
-    "Hello I am Valentina Stepanovna. Here you need add some  information";
 
   tasks: Task[];
-  
-  constructor(private taskService: TaskService) {}
+  user: UserProfile = {
+    id: '',
+    name: '',
+    role: UserRole.ADMIN,
+    secondName: '',
+    lastName: '',
+    phone: '',
+    address: '',
+  };
+
+  constructor(
+    private taskService: TaskService,
+    private userService: UserProfileService
+    ) {}
 
   ngOnInit() {
     this.taskService.getOlderTasks(this.olderId)
     .subscribe((tasks: Task[]) => this.tasks = tasks)
+
+    this.userService.getUserById(this.olderId)
+    .subscribe((user: UserProfile) => this.user = user)
   }
 }
