@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UserAuthToken, STORAGE_USER_TOKEN_KEY } from '../../types/user-auth-token';
 import { NgForage, NgForageCache } from 'ngforage';
 import { HttpClient } from '@angular/common/http';
+import { UserProfile } from 'src/app/types/user.model';
+import { STORAGE_USER_TOKEN_KEY } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class UserAuthService {
     private readonly cache: NgForageCache,
   ) {}
 
-  public async getUserDataFromStorage(): Promise<UserAuthToken | undefined> {
+  public async getUserDataFromStorage(): Promise<UserProfile | undefined> {
     try {
-      const user: UserAuthToken = await this.ngf.getItem<UserAuthToken>(STORAGE_USER_TOKEN_KEY);
+      const user: UserProfile = await this.ngf.getItem<UserProfile>(STORAGE_USER_TOKEN_KEY);
 
       return user;
     } catch (error) {
@@ -23,7 +24,7 @@ export class UserAuthService {
     }
   }
 
-  public async setUserData(user: UserAuthToken): Promise<boolean> {
+  public async setUserData(user: UserProfile): Promise<boolean> {
     try {
       await this.ngf.setItem(STORAGE_USER_TOKEN_KEY, user);
 
