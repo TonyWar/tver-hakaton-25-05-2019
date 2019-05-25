@@ -13,15 +13,7 @@ export class OlderComponent implements OnInit {
   olderId: string = '4';
 
   tasks: Task[];
-  user: UserProfile = {
-    id: '',
-    name: '',
-    role: UserRole.ADMIN,
-    secondName: '',
-    lastName: '',
-    phone: '',
-    address: '',
-  };
+  user: UserProfile;
 
   constructor(
     private taskService: TaskService,

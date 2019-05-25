@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" *ngIf="user">
   <mat-card-header>
     <mat-card-title>{{user.secondName}} {{user.name}} {{user.lastName}}</mat-card-title>
     <mat-card-subtitle>{{user.address}}</mat-card-subtitle>
