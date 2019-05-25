@@ -31,4 +31,9 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    console.log(this.loginForm.value);
+  }
 }
