@@ -51,7 +51,8 @@ export class AddTaskComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.taskForm.value.method)
+    console.log(this.taskForm.value)
+    console.log(this.repeatDays);
   }
 
 }
