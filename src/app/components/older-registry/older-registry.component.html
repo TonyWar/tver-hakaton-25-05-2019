@@ -6,18 +6,26 @@
       <input matInput formControlName="name" placeholder="Имя">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput formControlName="surname" placeholder="Фамилия">
+      <input matInput formControlName="secondName" placeholder="Фамилия">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="lastName" placeholder="Отчество">
     </mat-form-field>
     <mat-form-field class="full-width">
       <input matInput formControlName="address" placeholder="Адрес">
     </mat-form-field>
-  
+
     <mat-form-field class="datepicker">
-      <input matInput formControlName="old" [matDatepicker]="picker" placeholder="Возраст">
+      <input matInput formControlName="birthday" [matDatepicker]="picker" placeholder="Дата рождения">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  
-    <button class="btn-create" mat-raised-button (click)="submit()">Создать</button>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="phone" placeholder="Номер телефона">
+    </mat-form-field>
+
+    <button class="btn-create" mat-raised-button color='primary' (click)="submit()"
+      [disabled]="registryForm.invalid">Создать</button>
   </form>
 </div>

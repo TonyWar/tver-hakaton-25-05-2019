@@ -39,7 +39,9 @@ export class InMemoryDataService implements InMemoryDbService {
         secondName: 'Медведева',
         lastName: 'Олеговна',
         phone: '89041585858',
-        role: UserRole.OLDER
+        role: UserRole.OLDER,
+        birthday: '1956-06-13T21:00:00.000Z',
+        address: 'г.Тверь, Спортивный переулок, 12'
       }
     ];
     return { users };

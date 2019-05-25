@@ -42,7 +42,7 @@ export class SignInComponent implements OnInit {
     this.userProfileService.getUserProfileAuth(this.loginForm.controls.phone.value)
       .subscribe(userProfile => {
         let redirect = '';
-        switch(userProfile.role) {
+        switch (userProfile.role) {
           case UserRole.ADMIN:
             redirect = 'admin/profile';
             break;
@@ -55,8 +55,8 @@ export class SignInComponent implements OnInit {
         }
         this.router.navigate([redirect]);
       },
-      error => {
-        console.log('fail', error);
-      })
+        error => {
+          console.log('fail', error);
+        });
   }
 }
