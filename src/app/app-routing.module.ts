@@ -4,8 +4,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { OlderRegistryComponent } from './components/older-registry/older-registry.component';
 
 const routes: Routes = [
-  {path: 'sing-in', component: SignInComponent},
-  {path: 'admin/add_older', component: OlderRegistryComponent}
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'admin/add_older', component: OlderRegistryComponent }
 ];
 
 @NgModule({
