@@ -1,8 +1,9 @@
 <mat-grid-list cols="3" rowHeight="500px">
-    <mat-grid-tile
-        *ngFor="let user of users"
-        colspan="1"
-        rowspan="1">
-        <app-profile-card [user]="user"></app-profile-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-grid-tile *ngFor="let user of users" colspan="1" rowspan="1">
+    <app-profile-card
+      [user]="user"
+      (click)="goToProfile(user)"
+      class="profile"
+    ></app-profile-card>
+  </mat-grid-tile>
+</mat-grid-list>

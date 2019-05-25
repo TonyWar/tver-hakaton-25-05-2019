@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile } from 'src/app/types/user.model';
+import { UserProfile, UserRole } from 'src/app/types/user.model';
 import { UserProfileService } from 'src/app/services/user-profile/user-profile.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserProfileService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -33,9 +34,24 @@ export class UsersComponent implements OnInit {
     ).subscribe((users: UserProfile[]) => {
       this.users = users;
     })
-
-    // this.userService.getAllUsers()
-    // .subscribe((users: UserProfile[]) => this.users = users)
   }
 
+  goToProfile(user: UserProfile) {
+    let roleUrl: string = this.whoIs(user);
+    const url = `${roleUrl}/profile/${user.id}`
+    console.log(url)
+
+    this.router.navigate([`${roleUrl}/profile/${user.id}`])
+  }
+
+  private whoIs(user: UserProfile) {
+    let roleUrl: string;
+    if (user.role === UserRole.HELPER) {
+      roleUrl = 'helper';
+    }
+    if (user.role === UserRole.OLDER) {
+      roleUrl = 'older';
+    }
+    return roleUrl;
+  }
 }
