@@ -9,6 +9,7 @@ import { HelperComponent } from './profile/helper/helper.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { OnlyAdminGuard } from './guards/only-admin/only-admin.guard';
 import { UsersComponent } from './pages/users/users.component';
+import { TasksComponent } from './pages/tasks/tasks.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent},
   { path: 'users/:role', component: UsersComponent},
   { path: 'helper/profile', component: HelperComponent, canActivate: [AuthGuard] },
+  { path: 'tasks', component: TasksComponent},
   { path: '**',
     redirectTo: '/sign-in',
     pathMatch: 'full'
