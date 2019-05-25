@@ -17,6 +17,10 @@ export class UserProfileService {
     private auth: AuthService,
   ) { }
 
+  getAllUsers() {
+    return this.http.get<UserProfile[]>(this.profilesUrl);
+  }
+
   getUserProfileAuth(phone: string): Observable<UserProfile> {
     return this.http.get<UserProfile[]>(this.profilesUrl)
       .pipe(
