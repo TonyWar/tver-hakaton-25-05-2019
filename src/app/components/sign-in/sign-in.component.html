@@ -1,10 +1,27 @@
 <div class="container container--center">
-  <form>
+  <form [formGroup]="loginForm" autocomplete="off">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Favorite food" value="Sushi">
+      <input 
+        autocomplete="mobile"
+        matInput 
+        formControlName="phone"
+        placeholder="Мобильный телефон"
+        type="tel"
+      >
+      <mat-error *ngIf="loginForm.controls.phone.hasError('required')">
+        Mobile is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Favorite food" value="Sushi">
+      <input 
+        matInput 
+        formControlName="password"
+        placeholder="Пароль" 
+        type="password"
+      >
+      <mat-error *ngIf="loginForm.controls.phone.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
   </form>
 </div>
