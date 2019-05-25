@@ -24,4 +24,8 @@ export class NotificationsService {
   addNotificationToUser(notif: Notifications) {
     return this.http.post<Notifications>(this.profilesUrl, notif, httpOptions);
   }
+
+  removeNotification(id: string) {
+    return this.http.delete<Notifications>(`${this.profilesUrl}/${id}`);
+  }
 }

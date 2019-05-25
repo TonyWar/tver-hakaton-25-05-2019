@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Волонтеры Твери</span>
+    <a [routerLink]="['']" class="menu-item"> Волонтеры Твери </a>
     <span class="example-spacer"></span>
     <a [routerLink]="[profileLink]" class="menu-item"> Профиль </a>
     <a [routerLink]="['/tasks']" class="menu-item">Задачи</a>
     <a [routerLink]="['/users/helpers']" class="menu-item">Волонтеры</a>
     <a [routerLink]="['/users/olders']" class="menu-item">Пожилые</a>
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon 
         [matBadge]="notifications.length" 
         matBadgeColor="warn"
@@ -17,6 +17,16 @@
         notifications
       </mat-icon>
     </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button 
+        mat-menu-item 
+        *ngFor="let n of notifications" 
+        [routerLink]="[profileLink]"
+        (click)="removeNotif(n.id);"
+      >
+        {{n.message}}
+      </button>
+    </mat-menu>
     
   </mat-toolbar-row>
 </mat-toolbar>
