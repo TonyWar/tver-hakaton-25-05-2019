@@ -11,12 +11,14 @@ import { MaterialDModule } from './material-d/material-d.module';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
+import { OlderRegistryComponent } from './components/older-registry/older-registry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    OlderRegistryComponent
   ],
   imports: [
     BrowserModule,
