@@ -1,13 +1,24 @@
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let task of tasks" (click)="consoleLog()">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Title
+         <h6>{{ task.description }}</h6>
         </mat-panel-title>
         <mat-panel-description>
-         Description
+         <!-- date -->
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>Content</p>
+      <p>Ближайщая дата: {{ task.dateStart | date: 'dd M yyyy'  }}</p>
+      <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
+      <p *ngIf="!task.helperId">Волонтера пока нет</p>
+      <p *ngIf="task.helperId">Волонтером будет id =  {{ task.helperId }}</p>
+      <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
+      <span *ngIf="task.repeatDays && task.repeatDays['Monday']">Понедельник</span>
+      <span *ngIf="task.repeatDays && task.repeatDays['Tuesday']">, Вторник</span>
+      <span *ngIf="task.repeatDays && task.repeatDays['Wednesday']">, Среда</span>
+      <span *ngIf="task.repeatDays && task.repeatDays['Thursday']">, Четверг</span>
+      <span *ngIf="task.repeatDays && task.repeatDays['Friday']">, Пятница</span>
+      <span *ngIf="task.repeatDays && task.repeatDays['Saturday']">, Суббота</span>
+      <span *ngIf="task.repeatDays && task.repeatDays['Sunday']">, Воскресенье</span>
     </mat-expansion-panel>
   </mat-accordion>
