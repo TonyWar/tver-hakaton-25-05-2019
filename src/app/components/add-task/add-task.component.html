@@ -18,23 +18,25 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-radio-group formControlName="method" aria-label="Сколько раз помочь?">
+    <mat-radio-group class="radio-buttons" formControlName="method" aria-label="Сколько раз помочь?">
       <mat-radio-button value="once">Один раз помочь</mat-radio-button>
       <mat-radio-button value="repeat">Повторять помощь</mat-radio-button>
     </mat-radio-group>
 
     <div *ngIf="taskForm.value.method === 'repeat'" class="checkboxes">
-      <mat-checkbox>Понедельник</mat-checkbox>
-      <mat-checkbox>Вторник</mat-checkbox>
-      <mat-checkbox>Среда</mat-checkbox>
-      <mat-checkbox>Четверг</mat-checkbox>
-      <mat-checkbox>Пятница</mat-checkbox>
-      <mat-checkbox>Суббота</mat-checkbox>
-      <mat-checkbox>Воскресенье</mat-checkbox>
+      <mat-checkbox *ngFor="let day of repeatDays; let i = index" (click)="updateDays(i)">{{day.name}}</mat-checkbox>
     </div>
   
     <mat-form-field class="datepicker">
-      <input matInput formControlName="old" [matDatepicker]="picker" placeholder="Дата начала">
+      <input matInput formControlName="date" [matDatepicker]="picker" 
+      placeholder="Дата {{taskForm.value.method === 'repeat' ? 'начала' : ''}}">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="taskForm.value.method === 'repeat'" class="datepicker">
+      <input matInput formControlName="endDate" [matDatepicker]="picker" 
+      placeholder="Дата конца">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
