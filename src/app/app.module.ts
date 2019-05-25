@@ -19,6 +19,8 @@ import { AdminComponent } from './profile/admin/admin.component';
 import { HelperComponent } from './profile/helper/helper.component';
 import { OlderComponent } from './profile/older/older.component';
 import { UserCardComponent } from './profile/components/user-card/user-card.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { TaskAccordeonComponent } from './components/task-accordeon/task-accordeon.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { UserCardComponent } from './profile/components/user-card/user-card.comp
     AdminComponent,
     HelperComponent,
     OlderComponent,
-    UserCardComponent
+    UserCardComponent,
+    ProfileCardComponent,
+    TaskAccordeonComponent
   ],
   imports: [
     BrowserModule,
