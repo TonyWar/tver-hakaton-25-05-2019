@@ -4,10 +4,6 @@ import { ReplaySubject, Observable, concat, of } from 'rxjs';
 import { UserAuthService } from '../user-auth/user-auth.service';
 import { map } from 'rxjs/operators';
 
-export const STORAGE_USER_TOKEN_KEY = 'userAuth';
-export const AUTH_REPLACE_HEADER = 'needAuthHeader';
-export const LOGOUT_ROUTE = '/sign-in';
-
 @Injectable({
   providedIn: 'root'
 })

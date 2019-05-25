@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService, LOGOUT_ROUTE } from 'src/app/services/auth/auth.service';
 import { take, map } from 'rxjs/operators';
 import { UserRole } from 'src/app/types/user.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { LOGOUT_ROUTE } from 'src/app/types/variables';
 
 @Injectable({
   providedIn: 'root'

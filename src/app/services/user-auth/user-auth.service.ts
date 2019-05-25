@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgForage, NgForageCache } from 'ngforage';
 import { HttpClient } from '@angular/common/http';
 import { UserProfile } from 'src/app/types/user.model';
-import { STORAGE_USER_TOKEN_KEY } from '../auth/auth.service';
+import { STORAGE_USER_TOKEN_KEY } from 'src/app/types/variables';
 
 @Injectable({
   providedIn: 'root'
