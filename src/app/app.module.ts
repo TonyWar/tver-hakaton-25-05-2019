@@ -12,6 +12,7 @@ import { MaterialDModule } from './material-d/material-d.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 import { OlderRegistryComponent } from './components/older-registry/older-registry.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { OlderRegistryComponent } from './components/older-registry/older-regist
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialDModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )
