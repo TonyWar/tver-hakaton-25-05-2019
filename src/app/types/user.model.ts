@@ -3,12 +3,18 @@ export interface UserSignIn {
     password: string;
 }
 
-export interface User {
+export enum UserRole {
+    HELPER = 'HELPER',
+    ADMIN = 'ADMIN',
+    OLDER = 'OLDER'
+}
+
+export interface UserProfile {
+    id: string;
     photo?: string;
     name: string;
     secondName: string;
     lastName: string;
     phone: string;
-    password: string;
-    role: 'HELPER' | 'ADMIN' | 'OLDER';
+    role: UserRole;
 }
