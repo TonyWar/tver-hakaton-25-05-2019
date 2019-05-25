@@ -13,13 +13,15 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 import { OlderRegistryComponent } from './components/older-registry/older-registry.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    OlderRegistryComponent
+    OlderRegistryComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,

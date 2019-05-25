@@ -1,15 +1,21 @@
 <div class="container">
   <h1>Добавление пожилого человека</h1>
 
-  <form [formGroup]="registryForm" class="form">
+  <form [formGroup]="taskForm" class="form">
     <mat-form-field class="full-width">
-      <input matInput formControlName="name" placeholder="Имя">
+      <input matInput formControlName="name" placeholder="Кому нужна помощь">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput formControlName="surname" placeholder="Фамилия">
+      <input matInput formControlName="surname" placeholder="Описание">
     </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput formControlName="address" placeholder="Адрес">
+  
+    <mat-form-field>
+      <mat-label>Категория</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   
     <mat-form-field class="datepicker">
