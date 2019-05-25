@@ -14,24 +14,26 @@ export class AddTaskComponent implements OnInit {
     'Помыть окна',
     'Помочь дойти',
     'Помочь по дому',
+    'Выехать на дачу',
     'Другое'
   ]
 
-  public taskForm;
+  public taskForm = this.fb.group({
+    name: new FormControl('', [Validators.required]),
+    surname: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    old: new FormControl('', [Validators.required]),
+    method: new FormControl('', [Validators.required]),
+  });
   constructor(
     private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.taskForm = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      surname: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      old: new FormControl('', [Validators.required]),
-    });
+    this.taskForm.valueChanges.subscribe((respose) => console.log(respose))
   }
 
   submit() {
-    console.log(this.taskForm.value)
+    console.log(this.taskForm.value.method)
   }
 
 }
