@@ -30,5 +30,13 @@ export class TaskService {
   }
 
   // getHelperTasks()
-  // getFreeTasks()
+  getFreeTasks() {
+    return this.getTasks()
+      .pipe(
+        tap(tasks => {
+          console.log(tasks, tasks.filter(task => !task.helperId))
+        }),
+        map(tasks => tasks.filter(task => !task.helperId))
+      );
+  }
 }

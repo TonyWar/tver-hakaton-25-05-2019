@@ -22,6 +22,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 import { TaskAccordeonComponent } from './components/task-accordeon/task-accordeon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsersComponent } from './pages/users/users.component';
+import { TasksComponent } from './pages/tasks/tasks.component';
 import { HelperCardComponent } from './components/helper-card/helper-card.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { HelperCardComponent } from './components/helper-card/helper-card.compon
     TaskAccordeonComponent,
     HeaderComponent,
     UsersComponent,
+    TasksComponent,
     HelperCardComponent
   ],
   imports: [
