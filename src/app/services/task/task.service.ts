@@ -29,7 +29,15 @@ export class TaskService {
       )
   }
 
-  // getHelperTasks()
+  getHelperTasks(helperId: string) {
+    return this.http.get<Task[]>(this.tasksUrl)
+      .pipe(
+        map(tasks => tasks
+          .filter(task => task.helperId === helperId)
+        )
+      )
+  }
+
   getFreeTasks() {
     return this.getTasks()
       .pipe(

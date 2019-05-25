@@ -1,3 +1,8 @@
-<div *ngIf="helper" class="container">
+<div *ngIf="helper" class="container profile-page">
   <app-profile-card [user]="helper"></app-profile-card>
+
+  <div class="page-tasks">
+    <h4 class="can-i-help">Задания:</h4>
+    <app-task-accordeon [tasks]="tasks"></app-task-accordeon>
+  </div>
 </div>
