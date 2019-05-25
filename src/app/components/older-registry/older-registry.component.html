@@ -11,11 +11,11 @@
     <input matInput formControlName="address" placeholder="Адрес">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="datepicker">
     <input matInput formControlName="old" [matDatepicker]="picker" placeholder="Возраст">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <button mat-raised-button (click)="submit()">Создать</button>
+  <button class="btn-create" mat-raised-button (click)="submit()">Создать</button>
 </form>
