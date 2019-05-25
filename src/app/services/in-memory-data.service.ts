@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { UserProfile, UserRole } from '../types/user.model';
 import { Category } from '../types/categories.model';
 import { Task } from '../types/task.model';
+import { Notifications } from '../types/notifications.model';
 
 @Injectable({
   providedIn: 'root',
@@ -110,7 +111,15 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return { users, categories, tasks };
+    const notifications: Notifications[] = [
+      {
+        id: '1',
+        message: 'Вам было добавлено новое задание, зайдите в профиль',
+        userId: '2'
+      }
+    ];
+
+    return { users, categories, tasks, notifications };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
