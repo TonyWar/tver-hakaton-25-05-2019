@@ -17,4 +17,6 @@ export interface UserProfile {
     lastName: string;
     phone: string;
     role: UserRole;
+    birthday?: string;
+    address?: string;
 }

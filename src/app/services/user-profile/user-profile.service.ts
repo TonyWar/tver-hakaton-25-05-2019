@@ -23,4 +23,8 @@ export class UserProfileService {
         tap(user => { this.userProfile = user; })
       );
   }
+
+  addOlderUser(data: UserProfile) {
+    return this.http.post<any>(this.profilesUrl, data);
+  }
 }
