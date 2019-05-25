@@ -17,6 +17,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AdminComponent } from './profile/admin/admin.component';
 import { HelperComponent } from './profile/helper/helper.component';
 import { OlderComponent } from './profile/older/older.component';
+import { UserCardComponent } from './profile/components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { OlderComponent } from './profile/older/older.component';
     AddTaskComponent,
     AdminComponent,
     HelperComponent,
-    OlderComponent
+    OlderComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

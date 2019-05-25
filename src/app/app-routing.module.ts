@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'admin/add_older', component: OlderRegistryComponent },
   { path: 'admin/add_task', component: AddTaskComponent },
   { path: 'older/profile', component: OlderComponent },
+  { path: 'older/profile/:olderId', component: OlderComponent },
   { path: 'admin/profile', component: AdminComponent },
   { path: 'helper/profile', component: HelperComponent }
 ];

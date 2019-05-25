@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile/user-profile.service';
 import { UserRole } from 'src/app/types/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-older-registry',
@@ -21,7 +22,8 @@ export class OlderRegistryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userProfileService: UserProfileService
+    private userProfileService: UserProfileService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class OlderRegistryComponent implements OnInit {
   submit() {
     this.userProfileService.addOlderUser({ ...this.registryForm.value, role: UserRole.OLDER })
       .subscribe(res => {
-        console.log(res);
+        this.router.navigate(['older/profile']);
       });
   }
 }
