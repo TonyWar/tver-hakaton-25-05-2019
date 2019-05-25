@@ -3,44 +3,77 @@
 
   <form [formGroup]="taskForm" class="form">
     <mat-form-field class="full-width">
-      <input matInput formControlName="name" placeholder="Кому нужна помощь">
+      <input matInput formControlName="name" placeholder="Кому нужна помощь" />
     </mat-form-field>
     <mat-form-field class="full-width">
-      <textarea matInput formControlName="surname" placeholder="Описание"></textarea>
+      <textarea
+        matInput
+        formControlName="surname"
+        placeholder="Описание"
+      ></textarea>
     </mat-form-field>
-  
+
     <mat-form-field>
       <mat-label>Категория</mat-label>
       <mat-select>
         <mat-option *ngFor="let category of categories" [value]="category">
-          {{category}}
+          {{ category }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-radio-group class="radio-buttons" formControlName="method" aria-label="Сколько раз помочь?">
+    <mat-radio-group
+      class="radio-buttons"
+      formControlName="method"
+      aria-label="Сколько раз помочь?"
+    >
       <mat-radio-button value="once">Один раз помочь</mat-radio-button>
       <mat-radio-button value="repeat">Повторять помощь</mat-radio-button>
     </mat-radio-group>
 
     <div *ngIf="taskForm.value.method === 'repeat'" class="checkboxes">
-      <mat-checkbox *ngFor="let day of repeatDays; let i = index" (click)="updateDays(i)">{{day.name}}</mat-checkbox>
+      <h4>Выберете дни, в которые нужна помощь:</h4>
+      <mat-checkbox
+        *ngFor="let day of repeatDays; let i = index"
+        (click)="updateDays(i)"
+        >{{ day.name }}</mat-checkbox
+      >
     </div>
-  
+
     <mat-form-field class="datepicker">
-      <input matInput formControlName="date" [matDatepicker]="picker" 
-      placeholder="Дата {{taskForm.value.method === 'repeat' ? 'начала' : ''}}">
+      <input
+        matInput
+        formControlName="date"
+        [matDatepicker]="picker"
+        placeholder="Дата {{
+          taskForm.value.method === 'repeat' ? 'начала' : ''
+        }}"
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field *ngIf="taskForm.value.method === 'repeat'" class="datepicker">
-      <input matInput formControlName="endDate" [matDatepicker]="picker" 
-      placeholder="Дата конца">
+    <mat-form-field
+      *ngIf="taskForm.value.method === 'repeat'"
+      class="datepicker"
+    >
+      <input
+        matInput
+        formControlName="endDate"
+        [matDatepicker]="picker"
+        placeholder="Дата конца"
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  
-    <button class="btn-create" mat-raised-button (click)="submit()">Создать</button>
+
+    <div class="pick-time">
+      <p>Время</p>
+      <ngb-timepicker matInput formControlName="time"></ngb-timepicker>
+    </div>
+
+    <button class="btn-create" mat-raised-button (click)="submit()">
+      Создать
+    </button>
   </form>
 </div>

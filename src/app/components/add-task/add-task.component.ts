@@ -36,6 +36,7 @@ export class AddTaskComponent implements OnInit {
     method: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
     endDate: new FormControl('',),
+    time: new FormControl('', [Validators.required])
   });
 
   constructor(
