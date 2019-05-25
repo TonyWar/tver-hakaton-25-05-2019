@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'older/profile/:olderId', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'admin/profile', component: AdminComponent, canActivate: [AuthGuard, OnlyAdminGuard] },
   { path: 'users', component: UsersComponent},
-  { path: 'users/:roles', component: UsersComponent},
+  { path: 'users/:role', component: UsersComponent},
   { path: 'helper/profile', component: HelperComponent, canActivate: [AuthGuard] },
   { path: '**',
     redirectTo: '/sign-in',
