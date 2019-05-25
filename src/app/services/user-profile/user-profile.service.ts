@@ -21,15 +21,15 @@ export class UserProfileService {
     return this.http.get<UserProfile[]>(this.profilesUrl);
   }
 
-  getOlderUser() {
-    this.getAllUsers()
+  getOlderUsers() {
+    return this.getAllUsers()
       .pipe(
         map(users => users.filter(user => user.role === UserRole.OLDER))
       );
   }
 
-  getHelperUser() {
-    this.getAllUsers()
+  getHelperUsers() {
+    return this.getAllUsers()
       .pipe(
         map(users => users.filter(user => user.role === UserRole.HELPER))
       );

@@ -8,6 +8,7 @@ import { AdminComponent } from './profile/admin/admin.component';
 import { HelperComponent } from './profile/helper/helper.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { OnlyAdminGuard } from './guards/only-admin/only-admin.guard';
+import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'older/profile', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'older/profile/:olderId', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'admin/profile', component: AdminComponent, canActivate: [AuthGuard, OnlyAdminGuard] },
+  { path: 'users', component: UsersComponent},
+  { path: 'users/:role', component: UsersComponent},
   { path: 'helper/profile', component: HelperComponent, canActivate: [AuthGuard] },
   { path: '**',
     redirectTo: '/sign-in',

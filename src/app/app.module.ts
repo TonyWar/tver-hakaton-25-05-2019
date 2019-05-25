@@ -21,6 +21,7 @@ import { OlderComponent } from './profile/older/older.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { TaskAccordeonComponent } from './components/task-accordeon/task-accordeon.component';
 import { HeaderComponent } from './components/header/header.component';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HeaderComponent } from './components/header/header.component';
     OlderComponent,
     ProfileCardComponent,
     TaskAccordeonComponent,
-    HeaderComponent
+    HeaderComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
