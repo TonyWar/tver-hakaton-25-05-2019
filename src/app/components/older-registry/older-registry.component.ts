@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-older-registry',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OlderRegistryComponent implements OnInit {
 
-  constructor() { }
+  public registryForm;
+  constructor(
+    private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.registryForm = this.fb.group({
+      name: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      old: new FormControl('', [Validators.required]),
+    });
+  }
+
+  submit() {
+    console.log(this.registryForm.value)
   }
 
 }
