@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfileService } from 'src/app/services/user-profile/user-profile.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +7,9 @@ import { UserProfileService } from 'src/app/services/user-profile/user-profile.s
   styleUrls: ['./admin.component.less']
 })
 export class AdminComponent implements OnInit {
-  user = this.userProfileService.userProfile;
+  user = this.auth.userAuthData$;
   constructor(
-    private userProfileService: UserProfileService,
+    private auth: AuthService,
   ) { }
 
   ngOnInit() {
