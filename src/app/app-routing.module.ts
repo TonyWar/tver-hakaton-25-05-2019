@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent},
   { path: 'users/:role', component: UsersComponent},
   { path: 'helper/profile', component: HelperComponent, canActivate: [AuthGuard] },
+  { path: 'helper/profile/:helperId', component: HelperComponent, canActivate: [AuthGuard] },
   { path: 'tasks', component: TasksComponent},
   { path: '**',
     redirectTo: '/sign-in',
