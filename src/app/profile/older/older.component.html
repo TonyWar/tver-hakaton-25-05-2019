@@ -1,7 +1,8 @@
-<div class="container">
-    <app-profile-card
-    [user]="user"
-  ></app-profile-card>
+<div class="container profile-page">
+  <app-profile-card [user]="user"></app-profile-card>
 
-  <app-task-accordeon [tasks]="tasks"></app-task-accordeon>
+  <div class="page-tasks">
+    <h4 class="can-i-help">Чем можно помочь?</h4>
+    <app-task-accordeon [tasks]="tasks"></app-task-accordeon>
+  </div>
 </div>
