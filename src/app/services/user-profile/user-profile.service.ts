@@ -3,15 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserProfile } from 'src/app/types/user.model';
 import { map, tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProfileService {
   private profilesUrl = 'api/users';
-  public userProfile = new ReplaySubject<UserProfile>(1);
   constructor(
     private http: HttpClient,
+    private auth: AuthService,
   ) { }
 
   getUserProfileAuth(phone: string): Observable<UserProfile> {
@@ -22,7 +23,7 @@ export class UserProfileService {
         ),
         tap(user => {
           console.log('user auth', user);
-          this.userProfile.next(user);
+          this.auth.login(user);
         })
       );
   }
