@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserProfile } from 'src/app/types/user.model';
 import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProfileService {
   private profilesUrl = 'api/users';
-  public userProfile?: UserProfile;
+  public userProfile = new ReplaySubject<UserProfile>(1);
   constructor(
     private http: HttpClient,
   ) { }
@@ -20,7 +20,10 @@ export class UserProfileService {
         map(profiles => profiles
           .find(profile => profile.phone === phone)
         ),
-        tap(user => { this.userProfile = user; })
+        tap(user => {
+          console.log('user auth', user);
+          this.userProfile.next(user);
+        })
       );
   }
 

@@ -1,3 +1,6 @@
-<p>
-  admin works!
-</p>
+<ng-container *ngIf="(user | async) as user">
+  <app-profile-card 
+    [name]="user?.name"
+  >
+  </app-profile-card>
+</ng-container>
