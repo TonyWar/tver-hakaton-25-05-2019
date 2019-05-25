@@ -20,6 +20,7 @@ import { HelperComponent } from './profile/helper/helper.component';
 import { OlderComponent } from './profile/older/older.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { TaskAccordeonComponent } from './components/task-accordeon/task-accordeon.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TaskAccordeonComponent } from './components/task-accordeon/task-accorde
     HelperComponent,
     OlderComponent,
     ProfileCardComponent,
-    TaskAccordeonComponent
+    TaskAccordeonComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
