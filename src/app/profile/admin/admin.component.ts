@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfileService } from 'src/app/services/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-admin',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.less']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
+  user = this.userProfileService.userProfile;
+  constructor(
+    private userProfileService: UserProfileService,
+  ) { }
 
   ngOnInit() {
   }
