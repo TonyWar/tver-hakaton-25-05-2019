@@ -28,10 +28,7 @@ export class TaskService {
         )
       )
   }
+
   // getHelperTasks()
   // getFreeTasks()
-  
-  // addOlderUser(data: UserProfile) {
-  //   return this.http.post<any>(this.profilesUrl, data);
-  // }
 }

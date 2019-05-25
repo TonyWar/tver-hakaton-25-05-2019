@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from 'src/app/types/task.model';
 
 @Component({
   selector: 'app-task-accordeon',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-accordeon.component.less']
 })
 export class TaskAccordeonComponent implements OnInit {
+  @Input() tasks: Task[];
+  repeatDays: boolean[];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  consoleLog() {
+    console.log(this.tasks)
   }
 
 }
