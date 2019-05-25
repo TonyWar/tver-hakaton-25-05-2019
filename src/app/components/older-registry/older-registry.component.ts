@@ -27,7 +27,6 @@ export class OlderRegistryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
   }
 
   submit() {

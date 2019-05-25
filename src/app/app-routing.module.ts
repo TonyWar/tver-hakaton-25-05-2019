@@ -11,7 +11,7 @@ import { OnlyAdminGuard } from './guards/only-admin/only-admin.guard';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
-  { path: 'admin/add_older', component: OlderRegistryComponent, canActivate: [AuthGuard] },
+  { path: 'admin/add_older', component: OlderRegistryComponent, canActivate: [AuthGuard, OnlyAdminGuard] },
   { path: 'admin/add_task', component: AddTaskComponent, canActivate: [AuthGuard] },
   { path: 'older/profile', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'older/profile/:olderId', component: OlderComponent, canActivate: [AuthGuard] },
