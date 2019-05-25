@@ -1,4 +1,4 @@
-<div class="container profile-page">
+<div *ngIf="user" class="container profile-page" >
   <app-profile-card [user]="user"></app-profile-card>
 
   <div class="page-tasks">

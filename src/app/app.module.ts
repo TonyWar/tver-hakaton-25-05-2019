@@ -23,6 +23,7 @@ import { TaskAccordeonComponent } from './components/task-accordeon/task-accorde
 import { HeaderComponent } from './components/header/header.component';
 import { UsersComponent } from './pages/users/users.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { HelperCardComponent } from './components/helper-card/helper-card.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TasksComponent } from './pages/tasks/tasks.component';
     TaskAccordeonComponent,
     HeaderComponent,
     UsersComponent,
-    TasksComponent
+    TasksComponent,
+    HelperCardComponent
   ],
   imports: [
     BrowserModule,
