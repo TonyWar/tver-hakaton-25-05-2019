@@ -1,46 +1,81 @@
 <mat-accordion>
   <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
-      <mat-expansion-panel
-      *ngIf="authService.userRole === 'ADMIN' || authService.userId && authService.userId === task.helperId || !task.helperId"
-      (click)="consoleLog()"
+    <mat-expansion-panel
+      *ngIf="
+        authService.userRole === 'ADMIN' ||
+        (authService.userId && authService.userId === task.helperId) ||
+        !task.helperId
+      "
     >
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          <h6>{{ task.description }}</h6>
-        </mat-panel-title>
-        <mat-panel-description>
-          <!-- date -->
-        </mat-panel-description>
+        <div class="mat-panel">
+          <mat-panel-title>
+            <h6>{{ task.description }}</h6>
+          </mat-panel-title>
+          <mat-panel-description *ngIf="categories.length">
+            <mat-chip color="primary" selected>{{
+              getCategory(task.categoryId)
+            }}</mat-chip>
+          </mat-panel-description>
+        </div>
       </mat-expansion-panel-header>
       <div class="panel-body">
         <div class="left-part">
-          <p>Ближайщая дата: {{ task.dateStart | date: "dd M yyyy" }}</p>
-          <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
-  
-          <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
-          <span *ngIf="task.repeatDays && task.repeatDays['Monday']"
-            >Понедельник</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
-            >, Вторник</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
-            >, Среда</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Thursday']"
-            >, Четверг</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Friday']"
-            >, Пятница</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Saturday']"
-            >, Суббота</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Sunday']"
-            >, Воскресенье</span
-          >
+          <p>
+            <span class="bold">Ближайщая дата:</span>
+            {{ task.dateStart | date: "dd M yyyy" }}
+          </p>
+          <p>
+            <span class="bold">Время:</span> {{ getTime(task) }}
+          </p>
+
+          <p *ngIf="task.repeatDays" class="bold">В какие дни нужна помощь:</p>
+          <mat-chip-list>
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Monday']"
+              >Понедельник</mat-chip
+            >
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
+              >Вторник</mat-chip
+            >
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
+              >Среда</mat-chip
+            >
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Thursday']"
+              >Четверг</mat-chip
+            >
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Friday']"
+              >Пятница</mat-chip
+            >
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Saturday']"
+              >Суббота</mat-chip
+            >
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Sunday']"
+              >Воскресенье</mat-chip
+            >
+          </mat-chip-list>
         </div>
-  
+
         <div class="right-part">
           <div *ngIf="!task.helperId">
             <div *ngIf="!loadingNewHelper" class="no-helper">
@@ -54,7 +89,7 @@
             </div>
             <mat-spinner *ngIf="loadingNewHelper" diameter="70"></mat-spinner>
           </div>
-  
+
           <div *ngIf="task.helperId">
             <app-helper-card
               [helperId]="task.helperId"
@@ -64,13 +99,15 @@
         </div>
       </div>
       <div class="btn-container">
-        <button 
-          mat-raised-button 
-          (click)="getTask(task)" 
+        <button
+          mat-raised-button
+          (click)="getTask(task)"
           *ngIf="authService.userRole === 'HELPER'"
-        >Взять задание</button>
-        <button 
-          mat-raised-button 
+        >
+          Взять задание
+        </button>
+        <button
+          mat-raised-button
           (click)="cancelTask(task.id)"
           *ngIf="authService.userRole !== 'HELPER'"
         >
@@ -80,9 +117,10 @@
           mat-raised-button 
           (click)="addHelper(task.id)"
           *ngIf="authService.userRole === 'ADMIN'"
-        >Назначить</button>
+        >
+          Назначить
+        </button>
       </div>
     </mat-expansion-panel>
   </ng-container>
-  
 </mat-accordion>
