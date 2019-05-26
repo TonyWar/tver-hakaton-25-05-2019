@@ -1,11 +1,22 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <a [routerLink]="['']" class="menu-item"> Волонтеры Твери </a>
+    <a 
+      [routerLink]="['']" 
+      class="menu-item"
+    > 
+      Волонтеры Твери 
+    </a>
     <span class="example-spacer"></span>
     <a [routerLink]="[profileLink]" class="menu-item"> Профиль </a>
-    <a [routerLink]="['/tasks']" class="menu-item">Задачи</a>
-    <a [routerLink]="['/users/helpers']" class="menu-item">Волонтеры</a>
-    <a [routerLink]="['/users/olders']" class="menu-item">Пожилые</a>
+    <a *ngIf="role !== 'OLDER'" [routerLink]="['/tasks']" class="menu-item">Задачи</a>
+    <a 
+      [routerLink]="['/users/helpers']" 
+      class="menu-item"
+      *ngIf="role !== 'HELPER' && role !== 'OLDER'"
+    >
+      Волонтеры
+    </a>
+    <a *ngIf="role !== 'OLDER'" [routerLink]="['/users/olders']" class="menu-item">Пожилые</a>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon 
         [matBadge]="notifications.length" 
@@ -27,6 +38,5 @@
         {{n.message}}
       </button>
     </mat-menu>
-    
   </mat-toolbar-row>
 </mat-toolbar>
