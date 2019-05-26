@@ -45,4 +45,16 @@ export class TaskAccordeonComponent implements OnInit {
   trackByFn(index, item) {
     return item.id; // or item.id
   }
+
+  cancelTask(id: string) {
+
+    this.taskService.cancelTask(id)
+    .subscribe(res => {
+      let newTasks = [];
+      const index = this.tasks.findIndex(task => task.id === id);
+      newTasks = [ ...this.tasks.slice(0, index), ...this.tasks.slice(index + 1)]
+      console.log('newTasks', newTasks)
+      this.tasksChange.emit(newTasks);
+    });
+  }
 }
