@@ -15,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class HelperCardComponent implements OnInit {
   @Input() helperId: string;
   @Input() task: Task;
+  @Input() closedTasks;
 
   helper: UserProfile;
 

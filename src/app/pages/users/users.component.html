@@ -1,10 +1,12 @@
-<mat-grid-list cols="5" rowHeight="500px">
-  <mat-grid-tile *ngFor="let user of users" colspan="1" rowspan="1">
-    <app-profile-card
-      [user]="user"
-      [hideActions]="true"
-      (click)="goToProfile(user)"
-      class="profile"
-    ></app-profile-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container-user">
+  <mat-grid-list cols="3" rowHeight="500px">
+    <mat-grid-tile *ngFor="let user of users" colspan="1" rowspan="1">
+      <app-profile-card
+        [user]="user"
+        [hideActions]="true"
+        (click)="goToProfile(user)"
+        class="profile"
+      ></app-profile-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

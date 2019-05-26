@@ -67,19 +67,19 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: '4',
-        name: 'Валентина',
-        secondName: 'Медведева',
-        lastName: 'Олеговна',
+        name: 'Ольга',
+        secondName: 'Сканави',
+        lastName: 'Михайловна',
         phone: '89041585858',
         role: UserRole.OLDER,
         birthday: '1956-06-13T21:00:00.000Z',
-        address: 'г.Тверь, Спортивный переулок, 12'
+        address: 'г.Тверь, ул. Фрунзе, 12'
       },
       {
         id: '5',
-        name: 'Василий',
-        secondName: 'Леонтьев',
-        lastName: 'Анатольевич',
+        name: 'Ибрагим',
+        secondName: 'Гусейнов',
+        lastName: 'Нагиевич',
         phone: '89041234521',
         role: UserRole.OLDER,
         birthday: '1945-03-17T21:00:00.000Z',

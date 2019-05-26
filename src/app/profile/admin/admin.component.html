@@ -9,7 +9,13 @@
         <button mat-raised-button color="primary" (click)="navigateTo('admin/add_older');">Добавить пожилого человека</button>
     </div>
 
-    <!-- <h3>Карта открытых заданий</h3> -->
+    <h4>Лучше волонтеры</h4>
+    
+    <div class="flexible">
+        <app-helper-card *ngFor="let user1 of mockUsers" [helperId]="user1.id" [closedTasks]="user1.closedTasks"></app-helper-card>
+    </div>
+  
+
     <img src="../../../assets/upd-task.PNG" alt="">
   </div>
 </div>

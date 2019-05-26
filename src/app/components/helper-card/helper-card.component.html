@@ -9,8 +9,13 @@
         <span class="bold">Телефон:</span> {{ helper.phone }}
       </p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="!closedTasks">
       <button mat-raised-button (click)="openProfile()" *ngIf="authService.userId !== helper.id">Профиль</button>
       <button mat-raised-button (click)="removeFromTask()" *ngIf="authService.userRole !== 'OLDER'">Снять с задачи</button>
     </mat-card-actions>
+
+    <div *ngIf="closedTasks" class="top">
+        <p>Задач выполнено: {{closedTasks}}</p>
+    </div>
+    
   </mat-card>
