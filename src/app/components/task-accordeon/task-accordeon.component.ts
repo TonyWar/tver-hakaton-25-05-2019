@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/types/task.model';
+import { TaskService } from 'src/app/services/task/task.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserProfile } from 'src/app/types/user.model';
 
 @Component({
   selector: 'app-task-accordeon',
@@ -8,15 +11,38 @@ import { Task } from 'src/app/types/task.model';
 })
 export class TaskAccordeonComponent implements OnInit {
   @Input() tasks: Task[];
+  @Output() tasksChange = new EventEmitter<Task[]>();
   repeatDays: boolean[];
+  myProfile: UserProfile;
 
-  constructor() { }
+  constructor(
+    private taskService: TaskService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.userAuthData$
+    .subscribe((myProfile: UserProfile) => this.myProfile = myProfile)
   }
 
   consoleLog() {
     console.log(this.tasks)
   }
 
+  getTask(task: Task) {
+    const updatedTask = { ...task, helperId: this.myProfile.id}
+    console.log('updatedTask', updatedTask)
+    this.taskService.updateTask(updatedTask)
+      .subscribe(res => {
+        let newTasks = [];
+        const index = this.tasks.findIndex(task => task.id === updatedTask.id);
+        newTasks = [...this.tasks];
+        newTasks[index] = updatedTask;
+        this.tasksChange.emit(newTasks);
+      });
+  }
+
+  trackByFn(index, item) {
+    return item.id; // or item.id
+  }
 }

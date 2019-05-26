@@ -4,6 +4,7 @@ import { UserProfile } from 'src/app/types/user.model';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Task } from 'src/app/types/task.model';
+import { httpOptions } from 'src/app/types/variables';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,9 @@ export class TaskService {
         }),
         map(tasks => tasks.filter(task => !task.helperId))
       );
+  }
+
+  updateTask(updateTask: Task) {
+    return this.http.put<Task>(this.tasksUrl, updateTask, httpOptions);
   }
 }
