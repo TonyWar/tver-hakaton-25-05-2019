@@ -14,9 +14,9 @@ export class InMemoryDataService implements InMemoryDbService {
     const users: UserProfile[] = [
       {
         id: '1',
-        name: 'Иван',
-        secondName: 'Иванов',
-        lastName: 'Иванович',
+        name: 'Администратор',
+        secondName: 'Администратов',
+        lastName: 'Администратович',
         phone: '89000000000',
         role: UserRole.ADMIN
       },
@@ -36,6 +36,33 @@ export class InMemoryDataService implements InMemoryDbService {
         lastName: 'Дмитриевич',
         phone: '89040078219',
         categoryIds: ['7'],
+        role: UserRole.HELPER
+      },
+      {
+        id: '10',
+        name: 'Борис',
+        secondName: 'Николаев',
+        lastName: 'Дмитриевич',
+        phone: '89040088219',
+        categoryIds: ['2', '4'],
+        role: UserRole.HELPER
+      },
+      {
+        id: '11',
+        name: 'Захар',
+        secondName: 'Стрелков',
+        lastName: 'Иванович',
+        phone: '89040098219',
+        categoryIds: ['3', '4'],
+        role: UserRole.HELPER
+      },
+      {
+        id: '12',
+        name: 'Артём',
+        secondName: 'Меркушев',
+        lastName: 'Донатович',
+        phone: '89040098219',
+        categoryIds: ['2', '5'],
         role: UserRole.HELPER
       },
       {
@@ -67,7 +94,28 @@ export class InMemoryDataService implements InMemoryDbService {
         role: UserRole.OLDER,
         birthday: '1953-11-10T21:00:00.000Z',
         address: 'г.Тверь, Горького, 25'
-      }
+      },
+      {
+        id: '7',
+        name: 'Петр',
+        secondName: 'Коновалов',
+        lastName: 'Даниилович',
+        phone: '89041534523',
+        role: UserRole.OLDER,
+        birthday: '1955-11-10T21:00:00.000Z',
+        address: 'г.Тверь, пл. Мира, 25'
+      },
+      {
+        id: '8',
+        name: 'Иван',
+        secondName: 'Исаев',
+        lastName: 'Дамирович',
+        phone: '89041634523',
+        role: UserRole.OLDER,
+        birthday: '1952-09-10T21:00:00.000Z',
+        address: 'г.Тверь, ул. Артюхиной, 25'
+      },
+
     ];
     // const tasks
     const categories: Category[] = [
@@ -208,6 +256,25 @@ export class InMemoryDataService implements InMemoryDbService {
         },
         timeMinutes: 10,
         timeHours: 15,
+      },
+      {
+        id: '8',
+        description: 'Помочь с покупкой овощей',
+        categoryId: '2',
+        olderId: '6',
+        dateStart: '2019-05-30T21:00:00.000Z',
+        repeatable: true,
+        repeatDays: {
+          Monday: false,
+          Tuesday: false,
+          Wednesday: true,
+          Thursday: false,
+          Friday: false,
+          Saturday: false,
+          Sunday: false
+        },
+        timeMinutes: 14,
+        timeHours: 15,
       }
     ];
 
@@ -216,6 +283,16 @@ export class InMemoryDataService implements InMemoryDbService {
         id: '1',
         message: 'Вам было добавлено новое задание, зайдите в профиль',
         userId: '2'
+      },
+      {
+        id: '2',
+        message: 'Волонтёр выполнил поручение. Перейдите по ссылке для просмотра информации.',
+        userId: '1'
+      },
+      {
+        id: '3',
+        message: 'Волонтёр принял новое задание.',
+        userId: '1'
       }
     ];
 
