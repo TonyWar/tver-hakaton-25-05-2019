@@ -37,6 +37,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 const DataTable = [
   MatPaginatorModule,
   MatSortModule,
@@ -103,7 +105,8 @@ const Navigation = [
     ...Layout,
     ...ButtonsIndicators,
     ...PopupsModals,
-    ...DataTable
+    ...DataTable,
+    DragDropModule
   ]
 })
 export class MaterialDModule { }

@@ -1,0 +1,42 @@
+<div class="try-fox">
+<div 
+  id="currentUser"
+  cdkDropList
+  [cdkDropListData]="currentUser"
+  (cdkDropListDropped)="drop($event)"
+  [cdkDropListEnterPredicate]="noReturnPredicate"
+  cdkDropListConnectedTo="even"
+>
+  <app-profile-card
+    [user]="user"
+    class="profile"
+    *ngFor="let user of currentUser"
+    [cdkDragData]="user"
+    cdkDrag>
+  </app-profile-card>
+  <button>Применить</button>
+</div>
+<mat-grid-list 
+  cols="3" 
+  rowHeight="500px"
+  id="even"
+  cdkDropList
+  [cdkDropListData]="users"
+  cdkDropListConnectedTo="currentUser"
+  (cdkDropListDropped)="drop2($event)"
+  [cdkDropListEnterPredicate]="evenPredicate"
+>
+  <mat-grid-tile 
+    *ngFor="let user of users" 
+    colspan="1" 
+    rowspan="1"
+    cdkDrag
+    [cdkDragData]="user"
+  >
+    <app-profile-card
+      [user]="user"
+      class="profile"
+    ></app-profile-card>
+  </mat-grid-tile>
+</mat-grid-list>
+</div>
