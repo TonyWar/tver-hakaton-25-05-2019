@@ -1,13 +1,48 @@
-#currentUser{
-    min-width: 300px;
-    min-height: 600px;
-    border: 1px solid black;
+#currentUser {
+  min-width: 300px;
+  min-height: 600px;
+  border: 1px solid black;
 }
 
 .try-fox {
-    display: flex;
+  display: flex;
+  padding: 200px;
+  padding-top: 50px;
 }
 
 mat-grid-list {
-    flex-grow: 1;
+  flex-grow: 1;
+}
+
+.primenit {
+  // width: 200px !important;
+  margin: 50px auto;
+  font-size: 25px !important;
+}
+
+.current-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 650px;
+}
+
+::ng-deep mat-grid-tile .card {
+  height: 100% !important;
+}
+
+.profile {
+  cursor: pointer;
+  transition: 0.25s all;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  height: 470px;
+
+  &:hover {
+    // border: 2px solid blue;
+  }
+}
+
+h4{
+    margin-top: 20px;
 }

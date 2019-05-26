@@ -6,6 +6,7 @@
   (cdkDropListDropped)="drop($event)"
   [cdkDropListEnterPredicate]="noReturnPredicate"
   cdkDropListConnectedTo="even"
+  class="current-user"
 >
   <h4>Перетащите волонтёра:</h4>
   <app-profile-card
@@ -19,6 +20,8 @@
     mat-raised-button 
     *ngIf="currentUser.length"
     (click)="submit();"
+    color="accent"
+    class="primenit"
   >Применить</button>
 </div>
 <mat-grid-list 
