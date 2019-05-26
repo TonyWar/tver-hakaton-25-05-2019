@@ -11,26 +11,25 @@
     alt="Фото пользователя"
   />
   <mat-card-content>
-    <p>
-     Телефон: {{ user.phone }}
-    </p>
+    <p><span class="bold">Телефон:</span> {{ user.phone }}</p>
     <mat-chip-list *ngIf="categories">
       <mat-chip *ngFor="let category of categories" color="primary" selected>
         {{ category.title }}
       </mat-chip>
     </mat-chip-list>
-
   </mat-card-content>
   <mat-card-actions class="actions" *ngIf="!hideActions">
     <ng-content></ng-content>
-    <button 
-      mat-raised-button 
-      class="btn--spaced" 
-      (click)="addTask()" 
+    <button
+      mat-raised-button
+      class="btn--spaced"
+      (click)="addTask()"
       *ngIf="user.role === 'OLDER' && authService.userRole === 'ADMIN'"
-    >Добавить задание</button>
-    <button 
-      mat-raised-button 
+    >
+      Добавить задание
+    </button>
+    <button
+      mat-raised-button
       class="btn--spaced"
       *ngIf="user.role === 'OLDER' && authService.userRole === 'ADMIN'"
     >

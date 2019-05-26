@@ -20,4 +20,8 @@ export class AdminComponent implements OnInit {
   navigateTo(to: string) {
     this.router.navigate([to]);
   }
+
+  addHelper() {
+    this.router.navigate(['admin/add_helper'])
+  }
 }

@@ -47,6 +47,26 @@ export class InMemoryDataService implements InMemoryDbService {
         role: UserRole.OLDER,
         birthday: '1956-06-13T21:00:00.000Z',
         address: 'г.Тверь, Спортивный переулок, 12'
+      },
+      {
+        id: '5',
+        name: 'Василий',
+        secondName: 'Леонтьев',
+        lastName: 'Анатольевич',
+        phone: '89041234521',
+        role: UserRole.OLDER,
+        birthday: '1945-03-17T21:00:00.000Z',
+        address: 'г.Тверь, Хромова, 19'
+      },
+      {
+        id: '6',
+        name: 'Игорь',
+        secondName: 'Карлов',
+        lastName: 'Сергеевич',
+        phone: '89041434523',
+        role: UserRole.OLDER,
+        birthday: '1953-11-10T21:00:00.000Z',
+        address: 'г.Тверь, Горького, 25'
       }
     ];
     // const tasks
@@ -110,6 +130,84 @@ export class InMemoryDataService implements InMemoryDbService {
         },
         timeMinutes: 30,
         timeHours: 10,
+      },
+      {
+        id: '4',
+        description: 'Отремонтировать дверь',
+        categoryId: '5',
+        olderId: '5',
+        helperId: '3',
+        dateStart: '2019-05-25T21:00:00.000Z',
+        repeatable: true,
+        repeatDays: {
+          Monday: false,
+          Tuesday: true,
+          Wednesday: false,
+          Thursday: false,
+          Friday: false,
+          Saturday: true,
+          Sunday: false
+        },
+        timeMinutes: 45,
+        timeHours: 19,
+      },
+      {
+        id: '5',
+        description: 'Полить цветы',
+        categoryId: '7',
+        olderId: '5',
+        helperId: '3',
+        dateStart: '2019-05-25T21:00:00.000Z',
+        repeatable: false,
+        repeatDays: {
+          Monday: false,
+          Tuesday: false,
+          Wednesday: false,
+          Thursday: false,
+          Friday: false,
+          Saturday: false,
+          Sunday: false
+        },
+        timeMinutes: 10,
+        timeHours: 16,
+      },
+      {
+        id: '6',
+        description: 'Сопроводить до банка',
+        categoryId: '4',
+        olderId: '6',
+        dateStart: '2019-05-25T21:00:00.000Z',
+        repeatable: true,
+        repeatDays: {
+          Monday: false,
+          Tuesday: false,
+          Wednesday: true,
+          Thursday: false,
+          Friday: false,
+          Saturday: false,
+          Sunday: false
+        },
+        timeMinutes: 0,
+        timeHours: 18,
+      },
+      {
+        id: '7',
+        description: 'Посидеть с внуком',
+        categoryId: '7',
+        olderId: '6',
+        dateStart: '2019-05-30T21:00:00.000Z',
+        repeatable: true,
+        repeatDays: {
+          Monday: true,
+          Tuesday: false,
+          Wednesday: true,
+          Thursday: false,
+          Friday: false,
+          Saturday: true,
+          Sunday: false
+        },
+        timeMinutes: 10,
+        timeHours: 15,
       }
     ];
 
