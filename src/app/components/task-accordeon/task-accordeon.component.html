@@ -100,7 +100,7 @@
         <button
           mat-raised-button
           (click)="getTask(task)"
-          *ngIf="authService.userRole === 'HELPER'"
+          *ngIf="authService.userRole === 'HELPER' && authService.userId !== task.helperId"
         >
           Взять задание
         </button>
