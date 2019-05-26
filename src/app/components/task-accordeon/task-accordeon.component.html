@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let task of tasks" (click)="consoleLog()">
+  <mat-expansion-panel *ngFor="let task of tasks;trackBy: trackByFn" (click)="consoleLog()">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <h6>{{ task.description }}</h6>
@@ -48,9 +48,9 @@
       </div>
     </div>
     <div class="btn-container">
-      <button mat-raised-button>Взять задание</button>
-      <button mat-raised-button>Снять задание</button>
-      <button mat-raised-button>Назначить</button>
+      <button mat-raised-button (click)="getTask(task)">Взять задание</button>
+      <button mat-raised-button (click)="deleteHelper()">Снять задание</button>
+      <button mat-raised-button (click)="addHelper()">Назначить</button>
     </div>
   </mat-expansion-panel>
 </mat-accordion>

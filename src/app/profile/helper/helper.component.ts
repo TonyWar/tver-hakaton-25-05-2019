@@ -4,6 +4,7 @@ import { UserProfileService } from 'src/app/services/user-profile/user-profile.s
 import { UserProfile } from 'src/app/types/user.model';
 import { Task } from 'src/app/types/task.model';
 import { TaskService } from 'src/app/services/task/task.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-helper',
@@ -18,6 +19,7 @@ export class HelperComponent implements OnInit {
     private route: ActivatedRoute,
     private readonly userService: UserProfileService,
     private taskService: TaskService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,13 @@ export class HelperComponent implements OnInit {
 
         this.taskService.getHelperTasks(params.helperId)
         .subscribe((tasks: Task[]) => this.tasks = tasks)
+      } else {
+        this.authService.userAuthData$.subscribe((helper) => {
+          this.helper = helper
+
+          this.taskService.getHelperTasks(helper.id)
+          .subscribe((tasks: Task[]) => this.tasks = tasks)
+        })
       }
     })
   }
