@@ -26,6 +26,7 @@ export class InMemoryDataService implements InMemoryDbService {
         secondName: 'Пурис',
         lastName: 'Николаевич',
         phone: '89157191250',
+        categoryIds: ['1', '3', '6'],
         role: UserRole.HELPER
       },
       {
@@ -34,6 +35,7 @@ export class InMemoryDataService implements InMemoryDbService {
         secondName: 'Варламов',
         lastName: 'Дмитриевич',
         phone: '89040078219',
+        categoryIds: ['7'],
         role: UserRole.HELPER
       },
       {
