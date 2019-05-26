@@ -26,27 +26,29 @@
           <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
 
           <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
-          <span *ngIf="task.repeatDays && task.repeatDays['Monday']"
-            >Понедельник</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
-            >, Вторник</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
-            >, Среда</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Thursday']"
-            >, Четверг</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Friday']"
-            >, Пятница</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Saturday']"
-            >, Суббота</span
-          >
-          <span *ngIf="task.repeatDays && task.repeatDays['Sunday']"
-            >, Воскресенье</span
-          >
+          <mat-chip-list>
+            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Monday']"
+              >Понедельник</mat-chip
+            >
+            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
+              >Вторник</mat-chip
+            >
+            <mat-chip color="accent" selected  *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
+              >Среда</mat-chip
+            >
+            <mat-chip color="accent" selected  *ngIf="task.repeatDays && task.repeatDays['Thursday']"
+              >Четверг</mat-chip
+            >
+            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Friday']"
+              >Пятница</mat-chip
+            >
+            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Saturday']"
+              >Суббота</mat-chip
+            >
+            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Sunday']"
+              >Воскресенье</mat-chip
+            >
+          </mat-chip-list>
         </div>
 
         <div class="right-part">
