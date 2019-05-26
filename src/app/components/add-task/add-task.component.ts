@@ -64,7 +64,7 @@ export class AddTaskComponent implements OnInit {
     if (this.taskForm.valid) {
       this.addTask();
     } else {
-      this.openSnackBar('Неверно заполнена информация', 'заполнить')
+      this.openSnackBar('Неверно заполнена информация', 'Закрыть')
     }
   }
 

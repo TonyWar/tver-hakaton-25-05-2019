@@ -1,5 +1,8 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let task of tasks;trackBy: trackByFn" (click)="consoleLog()">
+  <mat-expansion-panel
+    *ngFor="let task of tasks; trackBy: trackByFn"
+    (click)="consoleLog()"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title>
         <h6>{{ task.description }}</h6>
@@ -38,18 +41,32 @@
       </div>
 
       <div class="right-part">
-        <p *ngIf="!task.helperId" class="no-helper">
-          Волонтера пока нет
-          <mat-icon class="icon-no-smile" aria-hidden="false" aria-label="Example delete icon">sentiment_dissatisfied</mat-icon>
-        </p>
+        <div *ngIf="!task.helperId">
+          <div *ngIf="!loadingNewHelper" class="no-helper">
+            Волонтера пока нет
+            <mat-icon
+              class="icon-no-smile"
+              aria-hidden="false"
+              aria-label="Example delete icon"
+              >sentiment_dissatisfied</mat-icon
+            >
+          </div>
+          <mat-spinner *ngIf="loadingNewHelper" diameter="70"></mat-spinner>
+        </div>
+
         <div *ngIf="task.helperId">
-          <app-helper-card [helperId]="task.helperId" [task]="task"></app-helper-card>
+          <app-helper-card
+            [helperId]="task.helperId"
+            [task]="task"
+          ></app-helper-card>
         </div>
       </div>
     </div>
     <div class="btn-container">
       <button mat-raised-button (click)="getTask(task)">Взять задание</button>
-      <button mat-raised-button (click)="cancelTask(task.id)">Закрыть задачу</button>
+      <button mat-raised-button (click)="cancelTask(task.id)">
+        Закрыть задачу
+      </button>
       <button mat-raised-button (click)="addHelper()">Назначить</button>
     </div>
   </mat-expansion-panel>

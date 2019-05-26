@@ -14,6 +14,7 @@ export class TaskAccordeonComponent implements OnInit {
   @Output() tasksChange = new EventEmitter<Task[]>();
   repeatDays: boolean[];
   myProfile: UserProfile;
+  loadingNewHelper: boolean = false;
 
   constructor(
     private taskService: TaskService,
@@ -30,6 +31,7 @@ export class TaskAccordeonComponent implements OnInit {
   }
 
   getTask(task: Task) {
+    this.loadingNewHelper = true;
     const updatedTask = { ...task, helperId: this.myProfile.id}
     console.log('updatedTask', updatedTask)
     this.taskService.updateTask(updatedTask)
@@ -39,6 +41,7 @@ export class TaskAccordeonComponent implements OnInit {
         newTasks = [...this.tasks];
         newTasks[index] = updatedTask;
         this.tasksChange.emit(newTasks);
+        this.loadingNewHelper = false;
       });
   }
 
