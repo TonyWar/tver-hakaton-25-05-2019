@@ -55,4 +55,8 @@ export class UserProfileService {
   addUser(data: UserProfile) {
     return this.http.post<any>(this.profilesUrl, data, httpOptions);
   }
+
+  updateUser(data: UserProfile) {
+    return this.http.put(this.profilesUrl, data, httpOptions);
+  }
 }
