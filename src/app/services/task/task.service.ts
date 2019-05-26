@@ -52,4 +52,12 @@ export class TaskService {
   updateTask(updateTask: Task) {
     return this.http.put<Task>(this.tasksUrl, updateTask, httpOptions);
   }
+
+  cancelTask(id: string) {
+    return this.http.delete<Task>(`${this.tasksUrl}/${id}`, httpOptions);
+  }
+
+  addTask(newTask) {
+    return this.http.post<Task>(this.tasksUrl, newTask, httpOptions);
+  }
 }

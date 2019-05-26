@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { summaryFileName } from '@angular/compiler/src/aot/util';
 import { UserProfile } from 'src/app/types/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-card',
@@ -10,9 +10,14 @@ import { UserProfile } from 'src/app/types/user.model';
 export class ProfileCardComponent implements OnInit {
   @Input() user: UserProfile;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  addTask() {
+    this.router.navigate([`/admin/add_task/${this.user.id}`])
+  }
 }

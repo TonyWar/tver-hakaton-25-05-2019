@@ -43,13 +43,13 @@
           <mat-icon class="icon-no-smile" aria-hidden="false" aria-label="Example delete icon">sentiment_dissatisfied</mat-icon>
         </p>
         <div *ngIf="task.helperId">
-          <app-helper-card [helperId]="task.helperId"></app-helper-card>
+          <app-helper-card [helperId]="task.helperId" [task]="task"></app-helper-card>
         </div>
       </div>
     </div>
     <div class="btn-container">
       <button mat-raised-button (click)="getTask(task)">Взять задание</button>
-      <button mat-raised-button (click)="deleteHelper()">Снять задание</button>
+      <button mat-raised-button (click)="cancelTask(task.id)">Закрыть задачу</button>
       <button mat-raised-button (click)="addHelper()">Назначить</button>
     </div>
   </mat-expansion-panel>
