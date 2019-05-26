@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   profileLink = '';
   notifications = [];
   userId?: string;
+  role?: string;
 
   constructor(
     private auth: AuthService,
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
     this.auth.userAuthData$.pipe(map(user => {
       if (!user) { return ''; }
       let redirect = '';
+      this.role = user.role;
       switch (user.role) {
         case UserRole.ADMIN:
           redirect = 'admin/profile';
