@@ -3,6 +3,8 @@ import { Task } from 'src/app/types/task.model';
 import { TaskService } from 'src/app/services/task/task.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserProfile } from 'src/app/types/user.model';
+import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { Category } from 'src/app/types/categories.model';
 
 @Component({
   selector: 'app-task-accordeon',
@@ -15,15 +17,26 @@ export class TaskAccordeonComponent implements OnInit {
   repeatDays: boolean[];
   myProfile: UserProfile;
   loadingNewHelper: boolean = false;
+  categories: Category[] = [];
 
   constructor(
     private taskService: TaskService,
-    public authService: AuthService
+    public authService: AuthService,
+    private categoryService: CategoriesService
   ) { }
 
   ngOnInit() {
     this.authService.userAuthData$
     .subscribe((myProfile: UserProfile) => this.myProfile = myProfile)
+
+    this.categoryService.getCategories()
+    .subscribe((categories: Category[]) => {
+      this.categories = categories;
+    })
+  }
+
+  getCategory(id) {
+    return this.categories.find(category => id === category.id).title;
   }
 
   consoleLog() {

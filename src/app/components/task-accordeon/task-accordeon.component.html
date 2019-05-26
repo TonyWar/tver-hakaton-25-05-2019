@@ -1,22 +1,30 @@
 <mat-accordion>
   <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
-      <mat-expansion-panel
-      *ngIf="authService.userRole === 'ADMIN' || authService.userId && authService.userId === task.helperId || !task.helperId"
+    <mat-expansion-panel
+      *ngIf="
+        authService.userRole === 'ADMIN' ||
+        (authService.userId && authService.userId === task.helperId) ||
+        !task.helperId
+      "
       (click)="consoleLog()"
     >
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          <h6>{{ task.description }}</h6>
-        </mat-panel-title>
-        <mat-panel-description>
-          <!-- date -->
-        </mat-panel-description>
+        <div class="mat-panel">
+          <mat-panel-title>
+            <h6>{{ task.description }}</h6>
+          </mat-panel-title>
+          <mat-panel-description *ngIf="categories.length">
+            <mat-chip color="primary" selected>{{
+              getCategory(task.categoryId)
+            }}</mat-chip>
+          </mat-panel-description>
+        </div>
       </mat-expansion-panel-header>
       <div class="panel-body">
         <div class="left-part">
           <p>Ближайщая дата: {{ task.dateStart | date: "dd M yyyy" }}</p>
           <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
-  
+
           <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
           <span *ngIf="task.repeatDays && task.repeatDays['Monday']"
             >Понедельник</span
@@ -40,7 +48,7 @@
             >, Воскресенье</span
           >
         </div>
-  
+
         <div class="right-part">
           <div *ngIf="!task.helperId">
             <div *ngIf="!loadingNewHelper" class="no-helper">
@@ -54,7 +62,7 @@
             </div>
             <mat-spinner *ngIf="loadingNewHelper" diameter="70"></mat-spinner>
           </div>
-  
+
           <div *ngIf="task.helperId">
             <app-helper-card
               [helperId]="task.helperId"
@@ -64,25 +72,28 @@
         </div>
       </div>
       <div class="btn-container">
-        <button 
-          mat-raised-button 
-          (click)="getTask(task)" 
+        <button
+          mat-raised-button
+          (click)="getTask(task)"
           *ngIf="authService.userRole === 'HELPER'"
-        >Взять задание</button>
-        <button 
-          mat-raised-button 
+        >
+          Взять задание
+        </button>
+        <button
+          mat-raised-button
           (click)="cancelTask(task.id)"
           *ngIf="authService.userRole !== 'HELPER'"
         >
           Закрыть задачу
         </button>
-        <button 
-          mat-raised-button 
+        <button
+          mat-raised-button
           (click)="addHelper()"
           *ngIf="authService.userRole === 'ADMIN'"
-        >Назначить</button>
+        >
+          Назначить
+        </button>
       </div>
     </mat-expansion-panel>
   </ng-container>
-  
 </mat-accordion>
