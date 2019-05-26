@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserProfile } from 'src/app/types/user.model';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { Category } from 'src/app/types/categories.model';
 
@@ -17,6 +18,7 @@ export class ProfileCardComponent implements OnInit {
   constructor(
     private router: Router,
     private categoryService: CategoriesService,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
