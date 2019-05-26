@@ -47,7 +47,6 @@ export class TaskAccordeonComponent implements OnInit {
   }
 
   cancelTask(id: string) {
-
     this.taskService.cancelTask(id)
     .subscribe(res => {
       let newTasks = [];

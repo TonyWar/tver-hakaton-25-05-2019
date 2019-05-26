@@ -56,4 +56,8 @@ export class TaskService {
   cancelTask(id: string) {
     return this.http.delete<Task>(`${this.tasksUrl}/${id}`, httpOptions);
   }
+
+  addTask(newTask) {
+    return this.http.post<Task>(this.tasksUrl, newTask, httpOptions);
+  }
 }
