@@ -6,16 +6,23 @@
     <mat-card-subtitle>{{ user.address }}</mat-card-subtitle>
   </mat-card-header>
   <img
-    *ngIf="user.role === 'OLDER'"
+    *ngIf="user.role === 'OLDER' && !user.avatar"
     mat-card-image
     src="../../../assets/svg/man.svg"
     alt="Фото пользователя"
     class="avatar"
   />
   <img
-    *ngIf="user.role !== 'OLDER'"
+    *ngIf="user.role !== 'OLDER' && !user.avatar"
     mat-card-image
     src="../../../assets/svg/man-helper.svg"
+    alt="Фото пользователя"
+    class="avatar"
+  />
+  <img
+    *ngIf="user.role === 'OLDER' && user.avatar"
+    mat-card-image
+    [attr.src]="user.avatar"
     alt="Фото пользователя"
     class="avatar"
   />

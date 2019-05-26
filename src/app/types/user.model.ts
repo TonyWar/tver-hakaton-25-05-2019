@@ -21,4 +21,5 @@ export interface UserProfile {
     address?: string;
     categoryIds?: string[];
     helperId?: string;
+    avatar?: string;
 }
