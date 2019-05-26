@@ -25,9 +25,7 @@
             <span class="bold">Ближайщая дата:</span>
             {{ task.dateStart | date: "dd M yyyy" }}
           </p>
-          <p>
-            <span class="bold">Время:</span> {{ getTime(task) }}
-          </p>
+          <p><span class="bold">Время:</span> {{ getTime(task) }}</p>
 
           <p *ngIf="task.repeatDays" class="bold">В какие дни нужна помощь:</p>
           <mat-chip-list>
