@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileCardComponent implements OnInit {
   @Input() user: UserProfile;
+  @Input() hideActions: boolean = false;
 
   constructor(
     private router: Router

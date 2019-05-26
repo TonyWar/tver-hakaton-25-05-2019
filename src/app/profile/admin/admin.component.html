@@ -1,12 +1,10 @@
-<ng-container *ngIf="(user | async) as user">
+<div *ngIf="(user | async) as user" class="container profile-page">
   <app-profile-card 
     [user]="user"
   >
   </app-profile-card>
-  <div>
+  <div class="right-part">
     <button mat-raised-button>Добавить волонтера</button>
     <button mat-raised-button (click)="navigateTo('admin/add_older');">Добавить пожилого человека</button>
-    <button mat-raised-button>Список пожилых людей</button>
   </div>
-  
-</ng-container>
+</div>

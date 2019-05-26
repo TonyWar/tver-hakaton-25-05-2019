@@ -13,7 +13,7 @@
       {{ user.phone}}
     </p>
   </mat-card-content>
-  <mat-card-actions class="actions">
+  <mat-card-actions class="actions" *ngIf="!hideActions">
     <ng-content></ng-content>
     <button mat-raised-button class="btn--spaced" (click)="addTask()">Добавить задание</button>
     <button mat-raised-button class="btn--spaced">
