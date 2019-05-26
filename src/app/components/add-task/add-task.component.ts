@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { TaskService } from "src/app/services/task/task.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Category } from 'src/app/types/categories.model';
+import { CategoriesService } from 'src/app/services/categories/categories.service';
 
 @Component({
   selector: "app-add-task",
@@ -10,15 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ["./add-task.component.less"]
 })
 export class AddTaskComponent implements OnInit {
-  categories = [
-    "Убраться дома",
-    "Купить продукты",
-    "Помыть окна",
-    "Помочь дойти",
-    "Помочь по дому",
-    "Выехать на дачу",
-    "Другое"
-  ];
+  categories: Category[];
 
   repeatDays = [
     { name: "Понедельник", selected: false, id: 0 },
@@ -47,12 +41,18 @@ export class AddTaskComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private categoryService: CategoriesService,
   ) {}
 
   ngOnInit() {
     this.taskForm.valueChanges.subscribe(respose => console.log(respose));
     this.route.params.subscribe(params => (this.olderId = params.olderId));
+    this.categoryService.getCategories()
+    .subscribe((categories: Category[]) => {
+      this.categories = categories;
+      console.log(categories);
+    })
   }
 
   updateDays(i) {

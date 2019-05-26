@@ -51,12 +51,12 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     // const tasks
     const categories: Category[] = [
-      { id: '1', title: 'Убраться дома' },
-      { id: '2', title: 'Купить продукты' },
-      { id: '3', title: 'Помыть окна' },
-      { id: '4', title: 'Помочь дойти' },
-      { id: '5', title: 'Помочь по дому' },
-      { id: '6', title: 'Выехать на дачу' },
+      { id: '1', title: 'Уборка' },
+      { id: '2', title: 'Покупки' },
+      { id: '3', title: 'Стирка' },
+      { id: '4', title: 'Сопровождение' },
+      { id: '5', title: 'Ремонт' },
+      { id: '6', title: 'Поездка' },
       { id: '7', title: 'Другое' }
     ];
 
