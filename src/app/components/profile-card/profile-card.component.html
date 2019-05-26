@@ -15,8 +15,17 @@
   </mat-card-content>
   <mat-card-actions class="actions" *ngIf="!hideActions">
     <ng-content></ng-content>
-    <button mat-raised-button class="btn--spaced" (click)="addTask()">Добавить задание</button>
-    <button mat-raised-button class="btn--spaced">
+    <button 
+      mat-raised-button 
+      class="btn--spaced" 
+      (click)="addTask()" 
+      *ngIf="user.role === 'OLDER' && authService.userRole === 'ADMIN'"
+    >Добавить задание</button>
+    <button 
+      mat-raised-button 
+      class="btn--spaced"
+      *ngIf="user.role === 'OLDER' && authService.userRole === 'ADMIN'"
+    >
       Добавить волонтера в помощь
     </button>
   </mat-card-actions>

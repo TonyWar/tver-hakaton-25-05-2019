@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserProfile } from 'src/app/types/user.model';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -12,7 +13,8 @@ export class ProfileCardComponent implements OnInit {
   @Input() hideActions: boolean = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
