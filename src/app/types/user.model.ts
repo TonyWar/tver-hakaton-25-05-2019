@@ -20,4 +20,5 @@ export interface UserProfile {
     birthday?: string;
     address?: string;
     categoryIds?: string[];
+    helperId?: string;
 }

@@ -3,6 +3,7 @@ import { Task } from 'src/app/types/task.model';
 import { TaskService } from 'src/app/services/task/task.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserProfile } from 'src/app/types/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-accordeon',
@@ -18,7 +19,8 @@ export class TaskAccordeonComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -58,5 +60,9 @@ export class TaskAccordeonComponent implements OnInit {
       console.log('newTasks', newTasks)
       this.tasksChange.emit(newTasks);
     });
+  }
+
+  addHelper(taskId) {
+    this.router.navigate([`drag/task/${taskId}`])
   }
 }

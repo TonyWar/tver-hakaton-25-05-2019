@@ -33,6 +33,7 @@
       mat-raised-button 
       class="btn--spaced"
       *ngIf="user.role === 'OLDER' && authService.userRole === 'ADMIN'"
+      (click)="redirect();"
     >
       Добавить волонтера в помощь
     </button>

@@ -28,6 +28,8 @@ const routes: Routes = [
   { path: 'helper/profile/:helperId', component: HelperComponent, canActivate: [AuthGuard] },
   { path: 'tasks', component: TasksComponent },
   { path: 'drag', component: DragUserComponent },
+  { path: 'drag/task/:taskId', component: DragUserComponent},
+  { path: 'drag/older/:olderId', component: DragUserComponent},
   { path: '**',
     redirectTo: '/sign-in',
     pathMatch: 'full'

@@ -78,7 +78,7 @@
         </button>
         <button 
           mat-raised-button 
-          (click)="addHelper()"
+          (click)="addHelper(task.id)"
           *ngIf="authService.userRole === 'ADMIN'"
         >Назначить</button>
       </div>

@@ -12,6 +12,10 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angul
 export class DragUserComponent implements OnInit {
   users: UserProfile[];
   currentUser: UserProfile[] = [];
+  mode?: 'older' | 'task';
+  someId?: string;
+  olderData?: UserProfile;
+  taskData?: Task;
 
   constructor(
     private userService: UserProfileService,

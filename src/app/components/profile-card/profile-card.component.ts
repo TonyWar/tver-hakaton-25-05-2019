@@ -30,10 +30,14 @@ export class ProfileCardComponent implements OnInit {
         this.categories = []
       }
       console.log(categories);
-    })
+    });
   }
 
   addTask() {
     this.router.navigate([`/admin/add_task/${this.user.id}`])
+  }
+
+  redirect() {
+    this.router.navigate([`drag/older/${this.user.id}`]);
   }
 }
