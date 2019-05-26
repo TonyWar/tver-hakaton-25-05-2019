@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   public readonly userAuthData$: ReplaySubject<UserProfile | undefined>;
   public userRole?: UserRole;
+  public userId?: string;
+
   constructor(
     private readonly userService: UserAuthService
   ) {
@@ -19,12 +21,14 @@ export class AuthService {
       .then(userData => {
         this.userAuthData$.next(userData);
         this.userRole = userData.role;
+        this.userId = userData.id;
       });
   }
 
   async login(user: UserProfile): Promise<boolean> {
     this.userAuthData$.next(user);
     this.userRole = user.role;
+    this.userId = user.id;
 
     return this.userService.setUserData(user);
   }
@@ -32,6 +36,7 @@ export class AuthService {
   async logout(): Promise<boolean> {
     this.userAuthData$.next(undefined);
     this.userRole = undefined;
+    this.userId = undefined;
 
     return this.userService.clearUserData();
   }

@@ -10,7 +10,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="openProfile()">Профиль</button>
+      <button mat-raised-button (click)="openProfile()" *ngIf="authService.userId !== helper.id">Профиль</button>
       <button mat-raised-button (click)="removeFromTask()" *ngIf="authService.userRole !== 'OLDER'">Снять с задачи</button>
     </mat-card-actions>
   </mat-card>

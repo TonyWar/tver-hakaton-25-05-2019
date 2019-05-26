@@ -1,6 +1,7 @@
 <mat-accordion>
   <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
       <mat-expansion-panel
+      *ngIf="authService.userId && authService.userId === task.helperId || !task.helperId"
       (click)="consoleLog()"
     >
       <mat-expansion-panel-header>
