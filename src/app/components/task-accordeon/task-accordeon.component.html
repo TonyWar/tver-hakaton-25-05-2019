@@ -1,73 +1,87 @@
 <mat-accordion>
-  <mat-expansion-panel
-    *ngFor="let task of tasks; trackBy: trackByFn"
-    (click)="consoleLog()"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <h6>{{ task.description }}</h6>
-      </mat-panel-title>
-      <mat-panel-description>
-        <!-- date -->
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div class="panel-body">
-      <div class="left-part">
-        <p>Ближайщая дата: {{ task.dateStart | date: "dd M yyyy" }}</p>
-        <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
-
-        <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
-        <span *ngIf="task.repeatDays && task.repeatDays['Monday']"
-          >Понедельник</span
-        >
-        <span *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
-          >, Вторник</span
-        >
-        <span *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
-          >, Среда</span
-        >
-        <span *ngIf="task.repeatDays && task.repeatDays['Thursday']"
-          >, Четверг</span
-        >
-        <span *ngIf="task.repeatDays && task.repeatDays['Friday']"
-          >, Пятница</span
-        >
-        <span *ngIf="task.repeatDays && task.repeatDays['Saturday']"
-          >, Суббота</span
-        >
-        <span *ngIf="task.repeatDays && task.repeatDays['Sunday']"
-          >, Воскресенье</span
-        >
-      </div>
-
-      <div class="right-part">
-        <div *ngIf="!task.helperId">
-          <div *ngIf="!loadingNewHelper" class="no-helper">
-            Волонтера пока нет
-            <mat-icon
-              class="icon-no-smile"
-              aria-hidden="false"
-              aria-label="Example delete icon"
-              >sentiment_dissatisfied</mat-icon
-            >
+  <ng-container *ngFor="let task of tasks; trackBy: trackByFn">
+      <mat-expansion-panel
+      (click)="consoleLog()"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h6>{{ task.description }}</h6>
+        </mat-panel-title>
+        <mat-panel-description>
+          <!-- date -->
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <div class="left-part">
+          <p>Ближайщая дата: {{ task.dateStart | date: "dd M yyyy" }}</p>
+          <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
+  
+          <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
+          <span *ngIf="task.repeatDays && task.repeatDays['Monday']"
+            >Понедельник</span
+          >
+          <span *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
+            >, Вторник</span
+          >
+          <span *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
+            >, Среда</span
+          >
+          <span *ngIf="task.repeatDays && task.repeatDays['Thursday']"
+            >, Четверг</span
+          >
+          <span *ngIf="task.repeatDays && task.repeatDays['Friday']"
+            >, Пятница</span
+          >
+          <span *ngIf="task.repeatDays && task.repeatDays['Saturday']"
+            >, Суббота</span
+          >
+          <span *ngIf="task.repeatDays && task.repeatDays['Sunday']"
+            >, Воскресенье</span
+          >
+        </div>
+  
+        <div class="right-part">
+          <div *ngIf="!task.helperId">
+            <div *ngIf="!loadingNewHelper" class="no-helper">
+              Волонтера пока нет
+              <mat-icon
+                class="icon-no-smile"
+                aria-hidden="false"
+                aria-label="Example delete icon"
+                >sentiment_dissatisfied</mat-icon
+              >
+            </div>
+            <mat-spinner *ngIf="loadingNewHelper" diameter="70"></mat-spinner>
           </div>
-          <mat-spinner *ngIf="loadingNewHelper" diameter="70"></mat-spinner>
-        </div>
-
-        <div *ngIf="task.helperId">
-          <app-helper-card
-            [helperId]="task.helperId"
-            [task]="task"
-          ></app-helper-card>
+  
+          <div *ngIf="task.helperId">
+            <app-helper-card
+              [helperId]="task.helperId"
+              [task]="task"
+            ></app-helper-card>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="btn-container">
-      <button mat-raised-button (click)="getTask(task)">Взять задание</button>
-      <button mat-raised-button (click)="cancelTask(task.id)">
-        Закрыть задачу
-      </button>
-      <button mat-raised-button (click)="addHelper()">Назначить</button>
-    </div>
-  </mat-expansion-panel>
+      <div class="btn-container">
+        <button 
+          mat-raised-button 
+          (click)="getTask(task)" 
+          *ngIf="authService.userRole === 'HELPER'"
+        >Взять задание</button>
+        <button 
+          mat-raised-button 
+          (click)="cancelTask(task.id)"
+          *ngIf="authService.userRole !== 'HELPER'"
+        >
+          Закрыть задачу
+        </button>
+        <button 
+          mat-raised-button 
+          (click)="addHelper()"
+          *ngIf="authService.userRole === 'ADMIN'"
+        >Назначить</button>
+      </div>
+    </mat-expansion-panel>
+  </ng-container>
+  
 </mat-accordion>

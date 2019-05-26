@@ -18,7 +18,7 @@ export class TaskAccordeonComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

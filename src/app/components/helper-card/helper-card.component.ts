@@ -4,6 +4,7 @@ import { UserProfileService } from 'src/app/services/user-profile/user-profile.s
 import { Router } from '@angular/router';
 import { TaskService } from 'src/app/services/task/task.service';
 import { Task } from 'src/app/types/task.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-helper-card',
@@ -20,6 +21,7 @@ export class HelperCardComponent implements OnInit {
     private userService: UserProfileService,
     private router: Router,
     private taskService: TaskService,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {

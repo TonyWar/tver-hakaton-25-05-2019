@@ -19,4 +19,5 @@ export interface UserProfile {
     role: UserRole;
     birthday?: string;
     address?: string;
+    categoryIds?: string[];
 }
