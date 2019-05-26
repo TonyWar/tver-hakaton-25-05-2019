@@ -1,13 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  Validators,
-  FormArray
-} from "@angular/forms";
-import { Task } from "src/app/types/task.model";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { TaskService } from "src/app/services/task/task.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-add-task",
@@ -50,7 +45,9 @@ export class AddTaskComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -64,6 +61,20 @@ export class AddTaskComponent implements OnInit {
   }
 
   submit() {
+    if (this.taskForm.valid) {
+      this.addTask();
+    } else {
+      this.openSnackBar('Неверно заполнена информация', 'заполнить')
+    }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  private addTask() {
     let task: any = {
       description: this.taskForm.value.description,
       categoryId: this.categories.find(
@@ -71,15 +82,13 @@ export class AddTaskComponent implements OnInit {
       ),
       olderId: this.olderId,
       dateStart: this.taskForm.value.date,
-      repeatable: this.taskForm.value.method === "repeat", 
+      repeatable: this.taskForm.value.method === "repeat",
       timeMinutes: this.taskForm.value.time.minute,
       timeHours: this.taskForm.value.time.hour
     };
-
     if (this.taskForm.value.dateEnd) {
       task = { ...task, dateEnd: this.taskForm.value.dateEnd };
     }
-
     if (this.taskForm.value.method === "repeat") {
       task = {
         ...task,
@@ -94,7 +103,10 @@ export class AddTaskComponent implements OnInit {
         }
       };
     }
-
-    this.taskService.addTask(task).subscribe();
+    this.taskService
+      .addTask(task)
+      .subscribe(res =>
+        this.router.navigate([`older/profile/${this.olderId}`])
+      );
   }
 }
