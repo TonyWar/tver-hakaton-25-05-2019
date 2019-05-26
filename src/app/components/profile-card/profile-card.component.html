@@ -1,7 +1,9 @@
 <mat-card class="card" *ngIf="user">
   <mat-card-header>
-    <mat-card-title>{{user.secondName}} {{user.name}} {{user.lastName}}</mat-card-title>
-    <mat-card-subtitle>{{user.address}}</mat-card-subtitle>
+    <mat-card-title
+      >{{ user.secondName }} {{ user.name }} {{ user.lastName }}</mat-card-title
+    >
+    <mat-card-subtitle>{{ user.address }}</mat-card-subtitle>
   </mat-card-header>
   <img
     mat-card-image
@@ -10,7 +12,10 @@
   />
   <mat-card-content>
     <p>
-      {{ user.phone}}
+      {{ user.phone }}
+    </p>
+    <p *ngFor="let category of categories">
+      {{ category.title }}
     </p>
   </mat-card-content>
   <mat-card-actions class="actions" *ngIf="!hideActions">
