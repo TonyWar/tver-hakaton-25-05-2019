@@ -52,7 +52,7 @@ export class UserProfileService {
     return this.http.get<UserProfile>(`${this.profilesUrl}/${id}`)
   }
 
-  addOlderUser(data: UserProfile) {
+  addUser(data: UserProfile) {
     return this.http.post<any>(this.profilesUrl, data, httpOptions);
   }
 }

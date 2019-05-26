@@ -11,12 +11,14 @@ import { OnlyAdminGuard } from './guards/only-admin/only-admin.guard';
 import { UsersComponent } from './pages/users/users.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DragUserComponent } from './components/drag-user/drag-user.component';
+import { AddHelperComponent } from './pages/add-helper/add-helper.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'admin/add_older', component: OlderRegistryComponent, canActivate: [AuthGuard, OnlyAdminGuard] },
   { path: 'admin/add_task', component: AddTaskComponent, canActivate: [AuthGuard] },
   { path: 'admin/add_task/:olderId', component: AddTaskComponent, canActivate: [AuthGuard] },
+  { path: 'admin/add_helper', component: AddHelperComponent, canActivate: [AuthGuard, OnlyAdminGuard]},
   { path: 'older/profile', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'older/profile/:olderId', component: OlderComponent, canActivate: [AuthGuard] },
   { path: 'admin/profile', component: AdminComponent, canActivate: [AuthGuard, OnlyAdminGuard] },
@@ -26,8 +28,7 @@ const routes: Routes = [
   { path: 'helper/profile/:helperId', component: HelperComponent, canActivate: [AuthGuard] },
   { path: 'tasks', component: TasksComponent },
   { path: 'drag', component: DragUserComponent },
-  {
-    path: '**',
+  { path: '**',
     redirectTo: '/sign-in',
     pathMatch: 'full'
   },

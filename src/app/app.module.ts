@@ -25,6 +25,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { HelperCardComponent } from './components/helper-card/helper-card.component';
 import { DragUserComponent } from './components/drag-user/drag-user.component';
+import { AddHelperComponent } from './pages/add-helper/add-helper.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DragUserComponent } from './components/drag-user/drag-user.component';
     UsersComponent,
     TasksComponent,
     HelperCardComponent,
-    DragUserComponent
+    DragUserComponent,
+    AddHelperComponent
   ],
   imports: [
     BrowserModule,
