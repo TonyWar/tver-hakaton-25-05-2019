@@ -73,7 +73,8 @@ export class InMemoryDataService implements InMemoryDbService {
         phone: '89041585858',
         role: UserRole.OLDER,
         birthday: '1956-06-13T21:00:00.000Z',
-        address: 'г.Тверь, ул. Фрунзе, 12'
+        address: 'г.Тверь, ул. Фрунзе, 12',
+        avatar: '/assets/old_5.jpg'
       },
       {
         id: '5',
@@ -83,7 +84,8 @@ export class InMemoryDataService implements InMemoryDbService {
         phone: '89041234521',
         role: UserRole.OLDER,
         birthday: '1945-03-17T21:00:00.000Z',
-        address: 'г.Тверь, Хромова, 19'
+        address: 'г.Тверь, Хромова, 19',
+        avatar: '/assets/old_4.jpg'
       },
       {
         id: '6',
@@ -93,7 +95,8 @@ export class InMemoryDataService implements InMemoryDbService {
         phone: '89041434523',
         role: UserRole.OLDER,
         birthday: '1953-11-10T21:00:00.000Z',
-        address: 'г.Тверь, Горького, 25'
+        address: 'г.Тверь, Горького, 25',
+        avatar: '/assets/old_3.jpg'
       },
       {
         id: '7',
@@ -103,7 +106,8 @@ export class InMemoryDataService implements InMemoryDbService {
         phone: '89041534523',
         role: UserRole.OLDER,
         birthday: '1955-11-10T21:00:00.000Z',
-        address: 'г.Тверь, пл. Мира, 25'
+        address: 'г.Тверь, пл. Мира, 25',
+        avatar: '/assets/old_2.jpg'
       },
       {
         id: '8',
@@ -113,7 +117,8 @@ export class InMemoryDataService implements InMemoryDbService {
         phone: '89041634523',
         role: UserRole.OLDER,
         birthday: '1952-09-10T21:00:00.000Z',
-        address: 'г.Тверь, ул. Артюхиной, 25'
+        address: 'г.Тверь, ул. Артюхиной, 25',
+        avatar: '/assets/old_1.jpg'
       },
 
     ];
