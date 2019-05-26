@@ -22,7 +22,11 @@ export class ProfileCardComponent implements OnInit {
   ngOnInit() {
     this.categoryService.getCategories()
     .subscribe((categories: Category[]) => {
-      this.categories = categories;
+      if (this.user.categoryIds) {
+        this.categories =  categories.filter(cat => this.user.categoryIds.includes(cat.id))
+      } else {
+        this.categories = []
+      }
       console.log(categories);
     })
   }

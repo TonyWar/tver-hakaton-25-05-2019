@@ -14,9 +14,12 @@
     <p>
       {{ user.phone }}
     </p>
-    <p *ngFor="let category of categories">
-      {{ category.title }}
-    </p>
+    <mat-chip-list *ngIf="categories">
+      <mat-chip *ngFor="let category of categories" color="primary" selected>
+        {{ category.title }}
+      </mat-chip>
+    </mat-chip-list>
+
   </mat-card-content>
   <mat-card-actions class="actions" *ngIf="!hideActions">
     <ng-content></ng-content>
