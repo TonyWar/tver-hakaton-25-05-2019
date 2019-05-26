@@ -3,6 +3,8 @@ import { FormControl, Validators, FormBuilder } from "@angular/forms";
 import { UserProfileService } from "src/app/services/user-profile/user-profile.service";
 import { Router } from "@angular/router";
 import { UserRole } from "src/app/types/user.model";
+import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { Category } from 'src/app/types/categories.model';
 
 @Component({
   selector: "app-add-helper",
@@ -10,15 +12,7 @@ import { UserRole } from "src/app/types/user.model";
   styleUrls: ["./add-helper.component.less"]
 })
 export class AddHelperComponent implements OnInit {
-  categories = [
-    "Убраться дома",
-    "Купить продукты",
-    "Помыть окна",
-    "Помочь дойти",
-    "Помочь по дому",
-    "Выехать на дачу",
-    "Другое"
-  ];
+  categories: Category[];
 
   public registryForm = this.fb.group({
     name: new FormControl("", [Validators.required]),
@@ -33,13 +27,16 @@ export class AddHelperComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userProfileService: UserProfileService,
-    private router: Router
+    private router: Router,
+    private categoryisService: CategoriesService,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.categoryisService.getCategories()
+    .subscribe((categories: Category[]) => this.categories = categories)
+  }
 
   submit() {
-    console.log('helper', { ...this.registryForm.value, role: UserRole.HELPER })
     this.userProfileService
       .addUser({ ...this.registryForm.value, role: UserRole.HELPER })
       .subscribe(res => {
