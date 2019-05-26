@@ -6,6 +6,7 @@ import { UserProfile } from 'src/app/types/user.model';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { Category } from 'src/app/types/categories.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-task-accordeon',
@@ -24,7 +25,8 @@ export class TaskAccordeonComponent implements OnInit {
     private taskService: TaskService,
     public authService: AuthService,
     private router: Router,
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -58,6 +60,7 @@ export class TaskAccordeonComponent implements OnInit {
     console.log('updatedTask', updatedTask)
     this.taskService.updateTask(updatedTask)
       .subscribe(res => {
+        this.openSnackBar('Задача добавлена!')
         let newTasks = [];
         const index = this.tasks.findIndex(task => task.id === updatedTask.id);
         newTasks = [...this.tasks];
@@ -74,6 +77,7 @@ export class TaskAccordeonComponent implements OnInit {
   cancelTask(id: string) {
     this.taskService.cancelTask(id)
     .subscribe(res => {
+      this.openSnackBar('Задача закрыта!')
       let newTasks = [];
       const index = this.tasks.findIndex(task => task.id === id);
       newTasks = [ ...this.tasks.slice(0, index), ...this.tasks.slice(index + 1)]
@@ -84,5 +88,11 @@ export class TaskAccordeonComponent implements OnInit {
 
   addHelper(taskId) {
     this.router.navigate([`drag/task/${taskId}`])
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 }
