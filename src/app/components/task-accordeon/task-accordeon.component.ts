@@ -39,8 +39,15 @@ export class TaskAccordeonComponent implements OnInit {
     return this.categories.find(category => id === category.id).title;
   }
 
-  consoleLog() {
-    console.log(this.tasks)
+  getTime(task: Task): string {
+    let hours = task.timeHours + '';
+    let minutes = task.timeMinutes + '';
+
+    if (minutes.length < 2) {
+      minutes = '0' + minutes;
+    }
+
+    return `${hours}:${minutes}`
   }
 
   getTask(task: Task) {

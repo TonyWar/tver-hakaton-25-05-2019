@@ -6,7 +6,6 @@
         (authService.userId && authService.userId === task.helperId) ||
         !task.helperId
       "
-      (click)="consoleLog()"
     >
       <mat-expansion-panel-header>
         <div class="mat-panel">
@@ -22,30 +21,56 @@
       </mat-expansion-panel-header>
       <div class="panel-body">
         <div class="left-part">
-          <p>Ближайщая дата: {{ task.dateStart | date: "dd M yyyy" }}</p>
-          <p>Время: {{ task.timeHours }} часов {{ task.timeMinutes }} минут</p>
+          <p>
+            <span class="bold">Ближайщая дата:</span>
+            {{ task.dateStart | date: "dd M yyyy" }}
+          </p>
+          <p>
+            <span class="bold">Время:</span> {{ getTime(task) }}
+          </p>
 
-          <p *ngIf="task.repeatDays">В какие дни нужна помощь:</p>
+          <p *ngIf="task.repeatDays" class="bold">В какие дни нужна помощь:</p>
           <mat-chip-list>
-            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Monday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Monday']"
               >Понедельник</mat-chip
             >
-            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Tuesday']"
               >Вторник</mat-chip
             >
-            <mat-chip color="accent" selected  *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Wednesday']"
               >Среда</mat-chip
             >
-            <mat-chip color="accent" selected  *ngIf="task.repeatDays && task.repeatDays['Thursday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Thursday']"
               >Четверг</mat-chip
             >
-            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Friday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Friday']"
               >Пятница</mat-chip
             >
-            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Saturday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Saturday']"
               >Суббота</mat-chip
             >
-            <mat-chip color="accent" selected *ngIf="task.repeatDays && task.repeatDays['Sunday']"
+            <mat-chip
+              color="accent"
+              selected
+              *ngIf="task.repeatDays && task.repeatDays['Sunday']"
               >Воскресенье</mat-chip
             >
           </mat-chip-list>
