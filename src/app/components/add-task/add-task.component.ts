@@ -77,8 +77,8 @@ export class AddTaskComponent implements OnInit {
     let task: any = {
       description: this.taskForm.value.description,
       categoryId: this.categories.find(
-        item => item === this.taskForm.value.category
-      ),
+        item => item.id === this.taskForm.value.category
+      ).id,
       olderId: this.olderId,
       dateStart: this.taskForm.value.date,
       repeatable: this.taskForm.value.method === "repeat",
